@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vocabulary 
+  name="WordprocessingML" 
+  startPart="MainDocument"
+  xmlns="http://PackageExplorer/Vocabulary">
+  <supportingVocabularies>
+    <vocabulary name="Shared" />
+    <vocabulary name="DrawingML" />
+  </supportingVocabularies>
+  <globalReferences>
+    <reference name="MainDocument" minOccurs="1" maxOccurs="1" type="implicit"/>    
+  </globalReferences>
+  <partTypes>
+    <partType name="AlternativeFormatImport" 
+              description="Allows content specified in an alternate format to be embedded directly in a WordprocessingML document."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/aFChunk">
+      <contentType name="text/plain" />
+      <contentType name="text/html" />
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+      <contentType name="application/xhtml+xml" />
+    </partType>
+    <partType name="Comments"
+              description="Contains the information about each comment in the document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="comments"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml" />
+      <reference name="AlternativeFormatImport" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Content" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedObject" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedPackage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Video" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Chart" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramColors" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramData" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramLayoutDefinition" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramStyle" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="Hyperlink" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="DocumentSettings"
+              description="Contains all the properties of the document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="settings"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml" />
+      <linkReference name="MailMergeDataSource" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="MailMergeHeaderDataSource" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="XslTransformation" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="DocumentTemplate" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="EndNotes"
+              description="Contains all the endnotes for the document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="endnotes"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/endnotes">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.endnotes+xml" />
+      <reference name="AlternativeFormatImport" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Content" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedObject" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedPackage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Video" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Chart" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramColors" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramData" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramLayoutDefinition" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramStyle" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="Hyperlink" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="FontTable"
+              description="Contains information about each of the fonts used by content in the document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="fonts"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.fontTable+xml" />
+      <reference name="Font" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="Footer"
+              description="Contains the information about a footer displayed for one or more sections."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="ftr"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml" />
+      <reference name="AlternativeFormatImport" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Content" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedObject" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedPackage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Video" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Chart" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramColors" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramData" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramLayoutDefinition" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramStyle" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="Hyperlink" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="FootNotes"
+              description="Contains all the footnotes for the document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="footnotes"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footnotes">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml" />
+      <reference name="AlternativeFormatImport" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Content" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedObject" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedPackage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Video" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Chart" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramColors" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramData" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramLayoutDefinition" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramStyle" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="Hyperlink" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="GlossaryDocument"
+              description="Stores the definition and content that shall be carried with the document for future insertion and/or use."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="glossaryDocument"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/glossaryDocument">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.document.glossary+xml" />
+      <reference name="Comments" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="DocumentSettings" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="EndNotes" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="FontTable" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="Footer" minOccurs="0" maxOccurs="3" type="explicit" />
+      <reference name="FootNotes" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="Header" minOccurs="0" maxOccurs="3" type="explicit" />
+      <reference name="NumberingDefinitions" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="StyleDefinitions" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="WebSettings" minOccurs="0" maxOccurs="1" type="explicit" />
+      <reference name="Content" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedObject" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedPackage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="PrinterSettings" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Video" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Chart" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramColors" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramData" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramLayoutDefinition" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramStyle" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="Hyperlink" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="Header"
+              description="Contains the information about a header displayed for one or more sections."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="hdr"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml" />
+      <reference name="AlternativeFormatImport" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Content" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit"  />
+      <reference name="EmbeddedObject" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedPackage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Video" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Chart" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramColors" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramData" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramLayoutDefinition" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramStyle" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="Hyperlink" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="MainDocument"
+              description="Contains the body of the document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="document"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml" />
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.template.main+xml" />
+      <!-- implicit -->
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="Comments" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="CustomXmlDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="implicit" />
+      <reference name="DocumentSettings" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="EndNotes" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="FontTable" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="FootNotes" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="GlossaryDocument" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="NumberingDefinitions" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="StyleDefinitions" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="WebSettings" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="Theme" vocabulary="DrawingML" minOccurs="0" maxOccurs="1" type="implicit" />
+      <reference name="Thumbnail" vocabulary="Shared" minOccurs="0" maxOccurs="1" type="implicit" />
+      <!-- explicit -->
+      <reference name="AlternativeFormatImport" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Chart" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Content" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramColors" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramData" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramLayoutDefinition" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="DiagramStyle" vocabulary="DrawingML" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedObject" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="EmbeddedPackage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Footer" minOccurs="0" maxOccurs="3" type="explicit" />
+      <reference name="Header" minOccurs="0" maxOccurs="3" type="explicit" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="PrinterSettings" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <reference name="Video" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="SubDocument" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+      <linkReference name="Hyperlink" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="NumberingDefinitions"
+              description="Contains a definition for the structure of each unique numbering definition in this document."
+              allowExternal="false"
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="numbering"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml" />
+      <reference name="Image" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="StyleDefinitions"
+              description="Contains the definition for a set of styles used by this document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="styles"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml" />
+    </partType>
+    <partType name="WebSettings"
+              description="Contains the definition for web-specific settings used by this document."
+              rootNamespace="http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+              rootElement="webSettings"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/webSettings">
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.webSettings+xml" />
+      <linkReference name="FrameSet" minOccurs="0" maxOccurs="unbounded" type="explicit"/>
+    </partType>
+  </partTypes>
+  <links>
+    <link name="DocumentTemplate"
+          description="Contains styles,numbering definitions, and so on that are made available when documents based on the template are edited."
+          allowInteral="false"
+          allowExternal="true"
+          sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/attachedTemplate" />
+    <link name="MailMergeDataSource"
+          description="The data-source for a mail merge operation."
+          allowInteral="false"
+          allowExternal="true"
+          sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/mailMergeSource" />
+    <link name="MailMergeHeaderDataSource"
+          description="The header data-source for a mail merge operation."
+          allowInteral="false"
+          allowExternal="true"
+          sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/mailMergeHeaderSource" />
+    <link name="XslTransformation"
+          description="An XSL Transformation which might be applied when the document is output as a single file."
+          allowInteral="false"
+          allowExternal="true"
+          sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/transform" />
+    <link name="SubDocument"
+          description="A piece of a master-subdocument collection."
+          allowInteral="false"
+          allowExternal="true"
+          sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/subDocument" />
+    <link name="FrameSet"
+          description="Specifies the location and placement of other WordprocessingML documents."
+          allowInteral="false"
+          allowExternal="true"
+          sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/frame" />
+  </links>
+</vocabulary>

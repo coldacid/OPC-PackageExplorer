@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+		 name="Package Explorer"
+		 author="Wouter van Vugt"
+		 copyright="(C) Wouter van Vugt 2007"
+		 description="The Package Explorer main addin"
+		 url="http://www.codeplex.com/PackageExplorer"
+		 version="1.0.0.0">
+
+	<a:Condition name="HasOpenDocument">
+		<HasDocument />
+	</a:Condition>
+
+	<a:Condition name="HasOpenTab">
+		<HasOpenTab />
+	</a:Condition>
+
+	<a:Condition name="HasOpenTabs">
+		<HasOpenTab tabCount="2" />
+	</a:Condition>
+
+	<a:Condition name="HasEditableOpenTab">
+		<HasEditableOpenTab />
+	</a:Condition>
+
+	<a:Condition name="HasDirtyOpenTab">
+		<HasDirtyOpenTab />
+	</a:Condition>
+
+  <a:Condition name="OpenTabSupportsEditing">
+    <OpenTabSupportsEditing />
+  </a:Condition>
+
+  <a:Extension path="/core/vocabularies">
+    <Vocabulary id="Shared"
+                filename="Shared.xml" />
+    <Vocabulary id="DrawingML"
+                filename="DrawingML.xml"
+                insertAfter="Shared"/>
+    <Vocabulary id="WML"
+                filename="WordprocessingML.xml"
+                insertAfter="DrawingML" />
+  </a:Extension>
+  
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="WorkbenchStrings"
+					resourceGroup="Workbench"
+					assemblyName="PackageExplorer, Version=3.0.0.42, Culture=neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+		<ResourceLibrary id="WorkbenchImages"
+					resourceGroup="Workbench"
+					assemblyName="PackageExplorer, Version=3.0.0.42, Culture=neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="ImageResources" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/services">
+		<Class id="WorkbenchService"
+			   class="PackageExplorer.Services.WorkbenchService" />
+		<Class id="SettingsService"
+			   class="PackageExplorer.Services.DefaultSettingsService" />
+		<Class id="DialogService"
+			   class="PackageExplorer.Services.DefaultDialogService" />
+		<Class id="ReloadService"
+			   class="PackageExplorer.Services.DefaultDocumentReloadService" />
+		<Class id="ToolStripService"
+			   class="PackageExplorer.Services.DefaultToolStripService" />
+		<Class id="SelectionService"
+			   class="PackageExplorer.Services.DefaultSelectionService" />
+		<Class id="EditorService"
+			   class="PackageExplorer.Services.DefaultEditorService" />
+		<Class id="RecentDocumentService"
+			   class="PackageExplorer.Services.DefaultRecentDocumentService" />
+    <Class id="VocabularyService"
+			   class="PackageExplorer.Services.DefaultVocabularyService" />
+		<Class id="LanguageService"
+			   class="PackageExplorer.UI.Language.LanguageService" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/workbench">
+		<Class id="workbenchLoader"
+			   class="PackageExplorer.UI.Workbench.Default.DefaultWorkbenchLoader" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/optionPanels">
+		<OptionPanel id="environmentSettings"
+					 title="Environment"
+					 defaultChildPane="globalSettings">
+			<OptionPanel id="globalSettings"
+						 title="Environment Settings"
+						 class="PackageExplorer.UI.Workbench.EnvironmentSettingsPanel" />
+      <OptionPanel id="fontSettings"
+						 title="Font Settings"
+						 class="PackageExplorer.UI.Workbench.FontSettingsPanel" />
+		</OptionPanel>
+    <OptionPanel id="editorPanels"
+                 insertAfter="environmentSettings"
+                 title="{RES: Workbench, EditorPanels}" />
+  </a:Extension>
+
+	<a:Extension path="/workspace/fileFilters">
+		<FileFilter id="allOpenXML"
+					title="{RES: Workbench, AllOOXMLFileFilter}"
+					filter="*.docx;*.docm;*.xlsx;*.xlsm;*.pptx;*.pptm" />
+		<FileFilter id="WML"
+					title="{RES: Workbench, WmlFileFilter}"
+					filter="*.docx;*.docm;*.dotx;*.dotm"
+					insertAfter="allOpenXML"/>
+		<FileFilter id="SML"
+					title="{RES: Workbench, SmlFileFilter}"
+					filter="*.xlsx;*.xlsm;*.xltx;*.xltm;*.xlsb;*.xlam"
+					insertAfter="WML"/>
+		<FileFilter id="PML"
+					title="{RES: Workbench, PmlFileFilter}"
+					filter="*.pptx;*.pptm;*.potx;*.potm;*.thmx;*.ppsx;*.ppsm"
+					insertAfter="SML"/>
+		<FileFilter id="All"
+					title="{RES: Workbench, AllFileFilter}"
+					filter="*.*"
+					insertAfter="PML"/>
+	</a:Extension>
+
+	<a:Extension path="/workspace/toolStrips">
+		<MenuStrip id="mainMenu">
+			<ToolStripMenuItem id="file"
+							   title="{RES: Workbench,FileMenuItem}">
+				<ToolStripMenuItem id="open"
+								           title="{RES: Workbench, OpenMenuItem}"
+								           shortcutKeys="Control, O"
+								           iconResource="Workbench, Open">
+					<ToolStripMenuItem id="openDocument"
+									           title="{RES: Workbench, OpenDocumentMenuItem}"
+									           commandName="File.OpenDocument"
+                             shortcutKeys="Control, O">
+					</ToolStripMenuItem>
+					<ToolStripMenuItem id="openFile"
+									           title="{RES: Workbench, OpenFileMenuItem}"
+									           insertAfter="openDocument"
+									           commandName="File.OpenFile">
+					</ToolStripMenuItem>
+				</ToolStripMenuItem>
+				<Condition ref="HasOpenDocument"
+						       action="Disable">
+					<ToolStripMenuItem id="save"
+									           title="{RES: Workbench, SaveMenuItem}"
+									           insertAfter="open"
+									           shortcutKeys="Control, S"
+									           iconResource="Workbench, Save"
+									           commandName="File.Save" />
+					<Condition ref="HasOpenDocument"
+							   action="Exclude">
+						<ToolStripMenuItem id="saveAs"
+										   title="{RES: Workbench, SaveAsMenuItem}"
+										   insertAfter="save"
+										   commandName="File.SaveAs"/>
+					</Condition>
+					<ToolStripMenuItem id="close"
+									   title="{RES: Workbench, CloseMenuItem}"
+									   insertAfter="saveAs"
+									   commandName="File.Close"/>
+				</Condition>
+				<ToolStripSeparator id="recentDocumentSeparator"
+									insertAfter="close" />
+				<ToolStripMenuItem id="recentDocuments"
+					title="{RES: Workbench, RecentDocumentsMenuItem}"
+					insertAfter="recentDocumentSeparator">
+					<MenuBuilder id="recentDocumentsBuilder"
+								 class="PackageExplorer.UI.Menu.RecentDocumentsSubMenuBuilder" />
+				</ToolStripMenuItem>
+				<ToolStripSeparator id="separator"
+									insertAfter="recentDocuments"/>
+				<ToolStripMenuItem id="exit"
+								   title="{RES: Workbench, ExitMenuItem}"
+								   insertAfter="separator"
+								   commandName="File.Quit"/>
+			</ToolStripMenuItem>
+      <ToolStripMenuItem id="edit"
+                         title="{RES: Workbench, EditMenuItem}"
+                         insertAfter="file">
+        <Condition ref="OpenTabSupportsEditing"
+                   action="Disable">
+          <ToolStripMenuItem id="cut"
+									           title="{RES: Workbench, CutMenuItem}"
+                             shortcutKeys="Control, X"
+									           commandName="Edit.Cut" />
+          <ToolStripMenuItem id="copy"
+									           title="{RES: Workbench, CopyMenuItem}"
+                             shortcutKeys="Control, C"
+									           commandName="Edit.Copy"
+                             insertAfter="cut"/>
+          <ToolStripMenuItem id="paste"
+                             insertAfter="copy"
+									           title="{RES: Workbench, PasteMenuItem}"
+                             shortcutKeys="Control, V"
+									           commandName="Edit.Paste" />
+          <ToolStripSeparator id="separator"
+										          insertAfter="paste" />
+          <ToolStripMenuItem id="selectAll"
+									   title="{RES: Workbench, SelectAllMenuItem}"
+                     shortcutKeys="Control, A"
+									   commandName="Edit.SelectAll" />
+        </Condition>
+      </ToolStripMenuItem>
+      <ToolStripMenuItem id="view"
+							   title="{RES: Workbench, ViewMenuItem}"
+							   insertAfter="edit">
+				<ToolStripSeparator id="separator1" />
+				<ToolStripMenuItem id="otherWindows"
+								   title="{RES: Workbench, OtherWindowsCommand}"
+								   insertAfter="separator1">
+					<ToolStripMenuItem id="newBrowser"
+									   title="{RES: Workbench, NewBrowserCommand}"
+									   commandName="PackageExplorer.NewBrowser" />
+				</ToolStripMenuItem>
+			</ToolStripMenuItem>
+			<ToolStripMenuItem id="tools"
+							   title="{RES: Workbench, ToolsMenuItem}"
+							   insertAfter="view">
+				<ToolStripMenuItem id="properties"
+								   title="{RES: Workbench, OptionsMenuItem}"
+								   commandName="Application.Options" />
+			</ToolStripMenuItem>
+			<ToolStripMenuItem id="window"
+							   title="{RES: Workbench, WindowMenuItem}"
+							   insertAfter="tools">
+				<Condition ref="HasOpenTab"
+						   action="Disable">
+					<ToolStripMenuItem id="closeAll"
+									   title="{RES: Workbench, CloseAllMenuItem}"
+									   commandName="Window.CloseAll" />
+					<ToolStripMenuItem id="closeActive"
+									   title="{RES: Workbench, CloseActiveMenuItem}"
+                     insertAfter="closeAll"
+                     shortcutKeys="Control, W"
+									   commandName="Window.CloseActive" />
+				</Condition>
+
+				<ToolStripMenuItem id="resetLayout"
+								   title="{RES: Workbench, ResetLayoutMenuItem}"
+								   insertAfter="closeActive"
+								   commandName="Window.ResetLayout"/>
+				<Condition ref="HasOpenTab"
+						   action="Exclude">
+					<ToolStripSeparator id="separator"
+										insertAfter="resetLayout" />
+					<MenuBuilder id="windowMenuBuilder"
+								 insertAfter="separator"
+								 class="PackageExplorer.UI.Menu.WindowSubMenuBuilder" />
+				</Condition>
+			</ToolStripMenuItem>
+      <ToolStripMenuItem id="help"
+							   title="{RES: Workbench, HelpMenuItem}"
+							   insertAfter="window">
+        <ToolStripMenuItem id="aboutDialog"
+								   title="{RES: Workbench, AboutMenuItem}"
+								   commandName="Help.AboutDialog" />
+        <ToolStripMenuItem id="donate"
+                           insertAfter="aboutDialog"
+								           title="{RES: Workbench, DonateMenuItem}" />
+      </ToolStripMenuItem>
+		</MenuStrip>
+
+		<ToolStrip id="mainStrip"
+				   insertBefore="mainMenu">
+			<ToolStripMenuItem id="open"
+							   displayStyle="Image"
+							   title=""
+							   insertAfter="new"
+							   iconResource="Workbench, Open"
+							   commandName="File.OpenDocument" />
+			<Condition ref="HasOpenDocument"
+					   action="Disable">
+				<ToolStripMenuItem id="save"
+								   insertAfter="open"
+								   displayStyle="Image"
+								   title=""
+								   iconResource="Workbench, Save"
+								   commandName="File.Save" />
+			</Condition>
+		</ToolStrip>
+
+		<ToolStrip id="activeDocStrip"
+				   insertBefore="mainStrip">
+			<Condition ref="HasOpenDocument"
+					   action="Disable">
+				<ToolStripMenuItem id="openInShell"
+								   insertAfter="save"
+								   displayStyle="Image"
+								   title=""
+								   iconResource="Workbench, OpenInShell"
+								   commandName="Document.OpenInShell" />
+				<ToolStripLabel id="activeDocumentLabel"
+								insertAfter="openInShell"
+								displayStyle="Text"
+								text="{APP: ActiveDocument}" />
+			</Condition>
+		</ToolStrip>
+	</a:Extension>
+
+	<a:Extension path="/workspace/contextStrips">
+		<ContextStrip id="tabContextStrip">
+			<Condition ref="HasEditableOpenTab"
+					   action="Disable">
+				<ToolStripMenuItem id="save"
+								   title="{RES: Workbench, SaveTabMenuItem}"
+								   insertAfter="open"
+								   commandName="Window.SaveActiveTab" />
+			</Condition>
+			<ToolStripMenuItem id="close"
+							   title="{RES: Workbench, CloseTabMenuItem}"
+							   insertAfter="save"
+							   commandName="Window.CloseActive" />
+			<Condition ref="HasOpenTabs"
+					   action="Disable">
+				<ToolStripMenuItem id="closeAllButActive"
+								   title="{RES: Workbench, CloseAllButActiveMenuItem}"
+								   insertAfter="close"
+								   commandName="Window.CloseAllButActive" />
+			</Condition>
+		</ContextStrip>
+	</a:Extension>
+
+	<a:Extension path="/workspace/commands">
+		<Class id="newBrowser"
+			   class="PackageExplorer.Commands.NewBrowserCommand" />
+		<Class id="saveActiveDocumentTabs"
+			   class="PackageExplorer.Commands.SaveActiveDocumentTabsCommand" />
+		<Class id="open"
+			   class="PackageExplorer.Commands.OpenDocumentCommand" />
+		<Class id="openFile"
+			   class="PackageExplorer.Commands.OpenFileCommand" />
+		<Class id="save"
+			   class="PackageExplorer.Commands.SaveCommand" />
+		<Class id="saveAs"
+			   class="PackageExplorer.Commands.SaveAsCommand" />
+		<Class id="closeDocument"
+			   class="PackageExplorer.Commands.CloseDocumentCommand" />
+		<Class id="quitCommand"
+			   class="PackageExplorer.Commands.QuitCommand" />
+		<Class id="showAboutDialog"
+			   class="PackageExplorer.Commands.ShowAboutDialogCommand" />
+		<Class id="openInShellCommand"
+			   class="PackageExplorer.Commands.OpenInShellCommand" />
+		<Class id="resetWindowLayout"
+			   class="PackageExplorer.Commands.ResetWindowLayoutCommand" />
+		<Class id="showPropertiesDialog"
+			   class="PackageExplorer.Commands.ShowOptionsDialogCommand" />
+		<Class id="closeAllButActiveTabCommand"
+			   class="PackageExplorer.Commands.CloseAllButActiveCommand" />
+		<Class id="saveActiveTabCommand"
+			   class="PackageExplorer.Commands.SaveTabCommand" />
+		<Class id="closeAllTabsCommand"
+			   class="PackageExplorer.Commands.CloseAllTabsCommand" />
+		<Class id="closeActiveTabCommand"
+			   class="PackageExplorer.Commands.CloseActiveTabCommand" />
+    <Class id="cutCommand"
+			   class="PackageExplorer.Commands.CutCommand" />
+    <Class id="copyCommand"
+			   class="PackageExplorer.Commands.CopyCommand" />
+    <Class id="pasteCommand"
+			   class="PackageExplorer.Commands.PasteCommand" />
+    <Class id="selectAllCommand"
+			   class="PackageExplorer.Commands.SelectAllCommand" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/contentTypeMappings">
+		<ContentTypeMapping id="xml"
+							extension=".xml"
+							contentTypes="Xml" />
+		<ContentTypeMapping id="txt"
+							extension=".txt"
+							contentTypes="Text" />
+    <ContentTypeMapping id="html"
+							extension=".html"
+							contentTypes="Text" />
+    <ContentTypeMapping id="htm"
+							extension=".htm"
+							contentTypes="Text" />
+		<ContentTypeMapping id="png"
+							extension=".png"
+							contentTypes="Image" />
+		<ContentTypeMapping id="jpg"
+							extension=".jpg"
+							contentTypes="Image" />
+		<ContentTypeMapping id="jpeg"
+							extension=".jpeg"
+							contentTypes="Image" />
+		<ContentTypeMapping id="gif"
+							extension=".gif"
+							contentTypes="Image" />
+		<ContentTypeMapping id="bmp"
+							extension=".bmp"
+							contentTypes="Image" />
+		<ContentTypeMapping id="emf"
+							extension=".emf"
+							contentTypes="Image" />
+		<ContentTypeMapping id="psdsxs"
+							extension=".psdsxs"
+							contentTypes="Xml" />
+		<ContentTypeMapping id="rels"
+							extension=".rels"
+							contentTypes="Xml" />
+	</a:Extension>
+</a:AddIn>

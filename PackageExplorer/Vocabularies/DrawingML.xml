@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vocabulary
+  name="DrawingML"
+  xmlns="http://PackageExplorer/Vocabulary">
+  <supportingVocabularies>
+    <vocabulary name="Shared" />
+  </supportingVocabularies>
+  <globalReferences />
+  <partTypes>
+    <partType name="Chart"
+              description="Describes a chart."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/chart"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/chart"
+              rootElement="chartSpace">
+      <contentType name="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>
+      <reference name="ChartDrawing" minOccurs="0" maxOccurs="1" type="explicit" />
+      <reference name="EmbeddedPackage" minOccurs="0" maxOccurs="unbounded" type="explicit" vocabulary="Shared" />
+    </partType>
+    <partType name="ChartDrawing"
+              description="Contains all basic drawing elements (shapes) which are explicitly associated with a chart."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/chartUserShapes"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/chart"
+              rootElement="userShapes">
+      <contentType name="application/vnd.openxmlformats-officedocument.drawingml.chartshapes+xml" />
+      <reference name="Chart" minOccurs="0" maxOccurs="1" type="explicit" />
+    </partType>
+    <partType name="DiagramColors"
+              description="Contains color information for a diagram."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramColors"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/diagram"
+              rootElement="colorsDef">
+      <contentType name="application/vnd.openxmlformats-officedocument.drawingml.diagramColors+xml"/>
+    </partType>
+    <partType name="DiagramData"
+              description="Contains the semantic data for a diagram."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramData"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/diagram"
+              rootElement="dataModel">
+      <contentType name="application/vnd.openxmlformats-officedocument.drawingml.diagramData+xml" />
+      <reference name="Image" minOccurs="0" maxOccurs="unbounded" type="explicit" vocabulary="Shared" />
+    </partType>
+    <partType name="DiagramLayoutDefinition"
+              description="Describes how diagram-related data is mapped to a shape."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramLayout"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/diagram"
+              rootElement="layoutDef">
+      <contentType name="application/vnd.openxmlformats-officedocument.drawingml.diagramLayout+xml" />
+      <reference name="Image" minOccurs="0" maxOccurs="unbounded" type="explicit" vocabulary="Shared" />
+    </partType>
+    <partType name="DiagramStyle"
+              description="Maps diagram semantic information to a document's theme."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramQuickStyle"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/diagram"
+              rootElement="styleDef">
+      <contentType name="application/vnd.openxmlformats-officedocument.drawingml.diagramStyle+xml"/>
+    </partType>
+    <partType name="Theme"
+              description="Contains information about the theme of a document."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/main"
+              rootElement="officeStyleSheet">
+      <contentType name="application/vnd.openxmlformats-officedocument.theme+xml" />
+      <reference name="Image" minOccurs="0" maxOccurs="unbounded" type="explicit" vocabulary="Shared" />
+    </partType>
+    <partType name="ThemeOverride"
+              description="Contains information about the theme overrides of a document."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/themeOverride"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/main"
+              rootElement="ossOverride">
+      <contentType name="application/vnd.openxmlformats-officedocument.themeOverride+xml"/>
+    </partType>
+    <partType name="TableStyles"
+              description="Contains information about the table styles used by tables in a presentation."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/tableStyles"
+              rootNamespace="http://schemas.openxmlformats.org/drawingml/2006/main"
+              rootElement="tblStyleLst">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.tableStyles+xml"/>
+    </partType>
+  </partTypes>
+  <links />
+</vocabulary>

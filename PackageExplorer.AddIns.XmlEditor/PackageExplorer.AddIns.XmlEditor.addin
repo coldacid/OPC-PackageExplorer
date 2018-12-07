@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+		 name="Package Explorer Xml Editor"
+		 author="Wouter van Vugt"
+		 copyright="(C) Wouter van Vugt 2007"
+		 description="The Package Explorer Xml Editor addin"
+		 url="http://codeplex.com/packageexplorer"
+		 version="1.0.0.0">
+
+	<a:Runtime>
+		<a:Assembly path="PackageExplorer.AddIns.XmlEditor, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+	</a:Runtime>
+
+	<a:Condition name="HasEditableXmlOpenTab">
+		<HasEditableXmlOpenTab/>
+	</a:Condition>
+
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="XmlEditor"
+					resourceGroup="XmlEditor"
+					assemblyName="PackageExplorer.AddIns.XmlEditor, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+	</a:Extension>
+	
+	<a:Extension path="/workspace/commands">
+		<Class id="XmlEditorFormatDocumentCommand"
+			   class="PackageExplorer.AddIns.XmlEditor.FormatDocumentCommand" />
+	</a:Extension>
+	
+	<a:Extension path="/workspace/toolStrips/activeDocStrip">
+		<Condition ref="HasEditableXmlOpenTab"
+				   action="Disable">
+		<ToolStripMenuItem id="formatDocument"
+						   title="{RES: XmlEditor, FormatDocumentCommand}"
+						   commandName="XmlEditor.FormatDocument" />
+		</Condition>
+	</a:Extension>
+
+	<a:Extension path="/workspace/editors">
+		<Editor id="xmlEditor"
+				title="{RES: XmlEditor, Title}"
+				insertBefore="textEditor" 
+				class="PackageExplorer.AddIns.XmlEditor.ContentEditor"
+				supportedTypes="Xml"
+        supportsEncoding="false"/>
+    <Editor id="xmlEditorWithEncoding"
+				title="{RES: XmlEditor, TitleWithEncoding}"
+				insertBefore="textEditor"
+				class="PackageExplorer.AddIns.XmlEditor.ContentEditor"
+				supportedTypes="Xml"
+        supportsEncoding="true"/>
+	</a:Extension>
+
+  <a:Extension path="/workspace/optionPanels/editorPanels">
+    <OptionPanel id="xmlEditorPanel"
+			title="{RES: XmlEditor, OptionPanelTitle}"
+      class="PackageExplorer.AddIns.XmlEditor.XmlEditorOptionsPanel" />
+  </a:Extension>
+  
+</a:AddIn>

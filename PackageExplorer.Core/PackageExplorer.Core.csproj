@@ -1,0 +1,144 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9D9D095D-7E60-40FA-B837-E506C608203D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PackageExplorer.Core</RootNamespace>
+    <AssemblyName>PackageExplorer.Core</AssemblyName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>..\PackageExplorer.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddInModel\AddIn.cs" />
+    <Compile Include="AddInModel\AddInFormatException.cs" />
+    <Compile Include="AddInModel\AddInLoadException.cs" />
+    <Compile Include="AddInModel\AddInTreeException.cs" />
+    <Compile Include="AddInModel\AddInTreeSingleton.cs" />
+    <Compile Include="AddInModel\Codons\ClassCodon.cs" />
+    <Compile Include="AddInModel\Codons\CodonBase.cs" />
+    <Compile Include="AddInModel\Codons\CodonBuilder.cs" />
+    <Compile Include="AddInModel\Codons\CodonFactory.cs" />
+    <Compile Include="AddInModel\Codons\CodonNameAttribute.cs" />
+    <Compile Include="AddInModel\Codons\CodonNotFoundException.cs" />
+    <Compile Include="AddInModel\Codons\DuplicateCodonException.cs" />
+    <Compile Include="AddInModel\Codons\ICodon.cs" />
+    <Compile Include="AddInModel\Codons\ICodonDeserialization.cs" />
+    <Compile Include="AddInModel\Codons\ICommand.cs" />
+    <Compile Include="AddInModel\Codons\IStatusEventReceiver.cs" />
+    <Compile Include="AddInModel\Conditions\ComplexConditions.cs" />
+    <Compile Include="AddInModel\Conditions\Condition.cs" />
+    <Compile Include="AddInModel\Conditions\ConditionBase.cs" />
+    <Compile Include="AddInModel\Conditions\ConditionBuilder.cs" />
+    <Compile Include="AddInModel\Conditions\ConditionFactory.cs" />
+    <Compile Include="AddInModel\Conditions\ConditionFailedAction.cs" />
+    <Compile Include="AddInModel\Conditions\ConditionNameAttribute.cs" />
+    <Compile Include="AddInModel\Conditions\ConditionNotFoundException.cs" />
+    <Compile Include="AddInModel\Conditions\DuplicateConditionException.cs" />
+    <Compile Include="AddInModel\Conditions\ICondition.cs" />
+    <Compile Include="AddInModel\DefaultAddInTree.cs" />
+    <Compile Include="AddInModel\DefaultAddInTreeNode.cs" />
+    <Compile Include="AddInModel\Extension.cs" />
+    <Compile Include="AddInModel\IAddInTree.cs" />
+    <Compile Include="AddInModel\IAddInTreeNode.cs" />
+    <Compile Include="AddInModel\MissingAttributeException.cs" />
+    <Compile Include="AddInModel\RequiredAttributeAttribute.cs" />
+    <Compile Include="AddInModel\TreePathException.cs" />
+    <Compile Include="PackageExplorerException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\Resource.cs" />
+    <Compile Include="Services\ResourceAssemblyCodon.cs" />
+    <Compile Include="Services\ResourceCodon.cs" />
+    <Compile Include="Services\ResourceService.cs" />
+    <Compile Include="Services\ResourceTypeCodon.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="Services\StringParserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddInModel\AddInSchema.xsd">
+      <SubType>
+      </SubType>
+    </EmbeddedResource>
+    <None Include="AddInModel\AddInSchema.xsx">
+      <DependentUpon>AddInSchema.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

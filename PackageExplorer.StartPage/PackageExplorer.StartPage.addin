@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+		 name="Package Explorer Browser Editor"
+		 author="Wouter van Vugt"
+		 copyright="(C) Wouter van Vugt 2007"
+		 description="The Package Explorer Browser Editor addin"
+		 url="http://codeplex.com/packageexplorer"
+		 version="1.0.0.0">
+
+	<a:Runtime>
+		<a:Assembly path="PackageExplorer.StartPage, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+	</a:Runtime>
+
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="StartPageStrings"
+					resourceGroup="StartPage"
+					assemblyName="PackageExplorer.StartPage, Version=1.0.0.0, Culture=neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/autoStartCommands">
+		<Class id="startPage"
+			   class="PackageExplorer.StartPage.AutoShowStartPageCommand"
+		   insertAfter="loadDockState" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/commands">
+		<Class id="showStartPageCommand"
+			   class="PackageExplorer.StartPage.ShowStartPageCommand" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/toolStrips/mainMenu/view/otherWindows">
+		<ToolStripMenuItem id="startPage"
+						   title="{RES: StartPage, ShowStartPageMenuItem}"
+						   commandName="Environment.ShowStartPage" />
+
+	</a:Extension>
+
+	<a:Extension path="/workspace/optionPanels/environmentSettings">
+		<OptionPanel id="startPageSettings"
+					 title="{RES: StartPage, Title}"
+					 class="PackageExplorer.StartPage.RSSSettingsPanel" />
+	</a:Extension>
+	
+</a:AddIn>

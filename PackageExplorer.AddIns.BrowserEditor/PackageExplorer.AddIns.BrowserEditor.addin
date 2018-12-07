@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+		 name="Package Explorer Browser Editor"
+		 author="Wouter van Vugt"
+		 copyright="(C) Wouter van Vugt 2007"
+		 description="The Package Explorer Browser Editor addin"
+		 url="http://codeplex.com/packageexplorer"
+		 version="1.0.0.0">
+
+	<a:Runtime>
+		<a:Assembly path="PackageExplorer.AddIns.BrowserEditor, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+	</a:Runtime>
+
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="BrowserEditor"
+					resourceGroup="BrowserEditor"
+					assemblyName="PackageExplorer.AddIns.BrowserEditor, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+	</a:Extension>
+	
+	<a:Extension path="/workspace/editors">
+		<Editor id="browserEditor"
+				title="{RES: BrowserEditor, Title}"
+				class="PackageExplorer.AddIns.BrowserEditor.ContentEditor"
+				supportedTypes="Xml" />
+	</a:Extension>
+</a:AddIn>

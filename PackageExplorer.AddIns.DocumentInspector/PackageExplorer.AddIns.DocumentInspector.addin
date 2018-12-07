@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+		 name="Package Explorer Document Inspector"
+		 author="Wouter van Vugt"
+		 copyright="(C) Wouter van Vugt 2007"
+		 description="The Package Explorer Document Inspector addin"
+		 url="http://codeplex.com/packageexplorer"
+		 version="1.0.0.0">
+
+	<a:Runtime>
+		<a:Assembly path="PackageExplorer.AddIns.DocumentInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+	</a:Runtime>
+
+	<a:Condition name="InternalXmlPartSelected">
+		<SelectedNodeType nodeType="InternalXmlPart" />
+	</a:Condition>
+
+	<a:Condition name="HasDocumentPartRelationshipPart">
+		<HasDocumentPartRelationshipPart  />
+	</a:Condition>
+
+	<a:Condition name="HasDocumentRelationshipPart">
+		<HasDocumentRelationshipPart  />
+	</a:Condition>
+
+	<a:Condition name="FlatModeEnabled">
+		<FlatModeState flatModeEnabled="false" />
+	</a:Condition>
+
+	<a:Condition name="HasPackagingErrors">
+		<HasPackagingErrors/>
+	</a:Condition>
+
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="DocumentInspectorStrings"
+					resourceGroup="DocumentInspector"
+					assemblyName="PackageExplorer.AddIns.DocumentInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+		<ResourceLibrary id="DocumentInspectorImages"
+					resourceGroup="DocumentInspector"
+					assemblyName="PackageExplorer.AddIns.DocumentInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="ImageResources" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/inspectors">
+		<Inspector id="documentInspector"
+			   inspectorID="{75D4E3DB-29FE-4bc2-B7D7-78280A30B2A6}"
+			   defaultDockState="DockLeft"
+			   startupDockState="DockLeft" 
+			   inspectorMenuTreePath="/workspace/documentInspector/toolStrips/commandMenu"
+			class="PackageExplorer.AddIns.DocumentInspector.DocumentInspectorControl"
+			title="{RES: DocumentInspector, Title}">
+		</Inspector>
+	</a:Extension>
+	
+	<a:Extension path="/workspace/commands">
+		
+		<Class id="copyRelationshipID"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.CopyRelationshipIDCommand" />
+		<Class id="showPackagingErrors"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.ShowPackagingErrorsCommand" />
+		<Class id="browseWith"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.BrowseWithCommand" />
+		<Class id="openPartCommand"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.OpenPartCommand" />
+		<Class id="viewDocumentInspector"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.ViewDocumentInspectorCommand" />
+		<Class id="docInspectorDisplayRelationships"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.DisplayRelationshipsCommand" />
+		<Class id="docInspectorDisplayFolders"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.DisplayFoldersCommand" />
+    <Class id="displayVocabulary"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.DisplayVocabularyCommand" />
+		<Class id="viewRelationshipsCommand"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.ViewRelationshipsCommand" />
+		<Class id="toggleFlatModeCommand"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.ToggleFlatModeCommand" />
+		<Class id="viewSignaturesCommand"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.ViewSignaturesCommand" />
+		<Class id="signDocumentCommand"
+			   class="PackageExplorer.AddIns.DocumentInspector.Commands.SignDocumentCommand" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/documentInspector/toolStrips">
+		<ToolStrip id="commandMenu">
+			<ToolStripDropDown id="displayMode"
+							           title="{RES: DocumentInspector,DisplayMode}"
+							           iconResource="DocumentInspector, DisplayMode"
+							           displayStyle="Image">
+				<ToolStripMenuItem id="folders"
+								           title="{RES: DocumentInspector, DisplayFolders}"
+								           isCheckable="true"
+								           commandName="DocumentInspector.DisplayFolders" />
+				<ToolStripMenuItem id="relationships"
+								           title="{RES: DocumentInspector, DisplayRelationships}"
+								           isCheckable="true"
+								           commandName="DocumentInspector.DisplayRelationships" />
+        <ToolStripMenuItem id="vocabulary"
+                           title="{RES: DocumentInspector, DisplayVocabulary}"
+                           commandName="DocumentInspector.DisplayVocabulary"
+                           isCheckable="true" />
+				<ToolStripMenuItem id="flatMode"
+								           title="{RES: DocumentInspector, FlatMode}"
+								           isCheckable="true"
+								           commandName="DocumentInspector.ToggleFlatMode" />
+			</ToolStripDropDown>
+		</ToolStrip>
+		<ContextStrip id="documentContextStrip">
+			<ToolStripMenuItem id="viewSignatures"
+							           title="{RES: DocumentInspector, ViewSignatures}"
+							           commandName="DocumentInspector.ViewSignatures" />
+			<Condition ref="HasDocumentRelationshipPart"
+					       action="Disable">
+				<ToolStripMenuItem id="viewRelationships"
+								           title="{RES: DocumentInspector, ViewRelationships}"
+								           commandName="DocumentInspector.ViewRelationships"
+								           insertAfter="viewSignatures" />
+			</Condition>
+			<Condition ref="HasPackagingErrors"
+					       action="Exclude">
+				<ToolStripMenuItem id="viewPackagingErrors"
+								           title="{RES: DocumentInspector, ViewPackagingErrors}"
+								           commandName="DocumentInspector.ShowPackagingErrors"
+								           insertAfter="viewRelationships" 
+								           insertBefore="separator1"/>				
+			</Condition>
+			<ToolStripSeparator id="separator1"
+								          insertAfter="viewRelationships" />
+			<ToolStripMenuItem id="sign"
+							           title="{RES: DocumentInspector, Sign}"
+							           commandName="DocumentInspector.SignDocument" 
+								         insertAfter="separator1"/>
+			<ToolStripSeparator id="separator2"
+								          insertAfter="sign" />
+			<ToolStripMenuItem id="close"
+							           title="{RES: DocumentInspector, CloseDocument}"
+						             commandName="File.Close"
+						             insertAfter="separator2" />			   
+		</ContextStrip>
+		<ContextStrip id="externalRelationshipContextStrip">
+		</ContextStrip>
+		<ContextStrip id="referencesContextStrip">
+		</ContextStrip>
+		<ContextStrip id="documentPartContextStrip">
+			<ToolStripMenuItem id="openPart"
+							           title="{RES: DocumentInspector, OpenPart}"
+							           commandName="DocumentInspector.OpenPart"
+                         insertBefore="browseWith" />
+			<ToolStripMenuItem id="browseWith"
+							           title="{RES: DocumentInspector, BrowseWith}"
+							           commandName="DocumentInspector.BrowseWith"
+						             insertAfter="openPart"
+                         insertBefore="separator" />
+      <ToolStripSeparator id="separator"
+								          insertAfter="browseWith"
+                          insertBefore="copyRelationshipID" />
+      <ToolStripMenuItem id="copyRelationshipID"
+                         title="{RES: DocumentInspector, CopyRelationshipID}"
+                         commandName="DocumentInspector.CopyRelationshipID"
+                         insertAfter="separator"
+                         insertBefore="viewRelationships"/>
+      <Condition ref="HasDocumentPartRelationshipPart"
+					       action="Disable">
+        <ToolStripMenuItem id="viewRelationships"
+								           title="{RES: DocumentInspector, ViewRelationships}"
+								           commandName="DocumentInspector.ViewRelationships"
+								           insertAfter="copyRelationshipID"
+                           insertBefore="separator2" />
+      </Condition>
+      <ToolStripSeparator id="separator2"
+                          insertAfter="viewRelationships" />
+		</ContextStrip>
+	</a:Extension>
+
+	<a:Extension path="/workspace/toolStrips/mainMenu/view">
+		<ToolStripMenuItem id="documentInspector"
+						           title="{RES: DocumentInspector, Title}"
+							         insertBefore="separator1"
+						           shortcutKeys="Control, Shift, D"
+						           commandName="View.DocumentInspector" />
+	</a:Extension>
+
+</a:AddIn>

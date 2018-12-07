@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+	name="Package Explorer Property Inspector"
+	author="Wouter van Vugt"
+	copyright="(C) Wouter van Vugt 2007"
+	description="The Package Explorer Property Inspector addin"
+	url="http://codeplex.com/packageexplorer"
+	version="1.0.0.0">
+
+	<a:Runtime>
+		<a:Assembly path="PackageExplorer.AddIns.PropertyInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+	</a:Runtime>
+
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="PropertyInspector"
+					resourceGroup="PropertyInspector"
+					assemblyName="PackageExplorer.AddIns.PropertyInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/inspectors">
+		<Inspector id="propertyInspector"
+			   inspectorID="{F85543F4-2F4C-4612-9502-44F83F6F168B}"
+			   defaultDockState="DockRight"
+			   startupDockState="DockRight" 
+			   class="PackageExplorer.AddIns.PropertyInspector.PropertyInspectorControl"
+				   title="{RES: PropertyInspector, Title}">
+		</Inspector>
+	</a:Extension>
+	
+	<a:Extension path="/workspace/commands">
+		<Class id="viewPropertyInspector"
+			   class="PackageExplorer.AddIns.PropertyInspector.ViewPropertyInspectorCommand" />
+	</a:Extension>
+	
+	<a:Extension path="/workspace/toolStrips/mainMenu/view">
+		<ToolStripMenuItem id="propertyInspector"
+			title="{RES: PropertyInspector, Title}"
+					   insertBefore="separator1"
+					   shortcutKeys="Control, Shift, P"
+			commandName="View.PropertyInspector" />
+	</a:Extension>
+
+</a:AddIn>

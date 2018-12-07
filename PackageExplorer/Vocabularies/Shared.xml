@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vocabulary name="Shared" xmlns="http://PackageExplorer/Vocabulary">
+  <supportingVocabularies />
+  <globalReferences>
+    <reference name="DigitalSignatureOrigin" minOccurs="0" maxOccurs="1" type="implicit" />
+    <reference name="FilePropertiesCore" minOccurs="0" maxOccurs="1" type="implicit" />
+    <reference name="FilePropertiesCustom" minOccurs="0" maxOccurs="1" type="implicit" />
+    <reference name="FilePropertiesExtended" minOccurs="0" maxOccurs="1" type="implicit" />
+  </globalReferences>
+  <partTypes>
+    <partType name="AdditionalCharacteristics"
+              description="Contains information about additional characteristics of the producer that generated the document."
+              rootNamespace="http://schemas.openxmlformats.org/officeDocument/2006/additionalCharacteristics"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml">
+      <contentType name="application/xml" />
+      <reference name="CustomXmlDataStorageProperties" minOccurs="0" maxOccurs="unbounded" type="implicit" />
+    </partType>
+    <partType name="Audio"
+              description="Contains an audio file."
+              allowExternal="true"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/audio">
+    </partType>
+    <partType name="Bibliography"
+              description="Contains bibliographic data for the current package."
+              rootNamespace="http://schemas.openxmlformats.org/officeDocument/2006/bibliography"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml">
+      <contentType name="application/xml" />
+      <reference name="CustomXmlDataStorageProperties" minOccurs="0" maxOccurs="unbounded" type="implicit" />
+    </partType>
+    <partType name="Content"
+              description="Can contain XML markup of a format not defined by ISO/IEC 29500."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml">
+    </partType>
+    <partType name="CustomXmlDataStorage"
+              description="Can contain arbitrary XML."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXml">
+      <contentType name="application/xml" />
+      <reference name="CustomXmlDataStorageProperties" minOccurs="0" maxOccurs="unbounded" type="implicit"/>
+    </partType>
+    <partType name="CustomXmlDataStorageProperties"
+              description="Contains the set of properties which are specified for custom XML data."
+              rootNamespace="http://schemas.openxmlformats.org/officeDocument/2006/customXmlDataProps"
+              rootElement="datastoreItem" 
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/customXmlProps">
+      <contentType name="application/vnd.openxmlformats-officedocument.customXmlProperties+xml" />
+    </partType>
+    <partType name="DigitalSignatureOrigin"
+              description="The starting point for navigating through the signatures in a package."
+              sourceRelationship="http://schemas.openxmlformats.org/package/2006/relationships/digital-signature/origin">
+      <contentType name="application/vnd.openxmlformats-package.digital-signature-origin" />
+      <reference name="DigitalSignatureXmlSignature" minOccurs="0" maxOccurs="unbounded" type="implicit" />
+    </partType>
+    <partType name="DigitalSignatureXmlSignature"
+              description="Contains digital signature markup."
+              rootNamespace="http://schemas.openxmlformats.org/package/2006/digital-signature"
+              rootElement="Signature"
+              sourceRelationship="http://schemas.openxmlformats.org/package/2006/relationships/digital-signature/signature">
+      <contentType name="application/vnd.openxmlformats-package.digital-signature-xmlsignature+xml" />
+    </partType>
+    <partType name="EmbeddedControlPersistence"
+              description="Contains information about an embedded control in the package."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/control">
+    </partType>
+    <partType name="EmbeddedObject"
+              description="Contains an embedded object produced by any embedded object server."
+              allowExternal="true"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/oleObject">
+      <linkReference name="Hyperlink" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="EmbeddedPackage"
+              description="Contains a complete package."
+              allowExternal="true"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/package">
+      <linkReference name="Hyperlink" minOccurs="0" maxOccurs="unbounded" type="explicit" />
+    </partType>
+    <partType name="FilePropertiesCore"
+              description="Stores common sets of properties within packages."
+              rootNamespace="http://schemas.openxmlformats.org/package/2006/metadata/core-properties"
+              rootElement="coreProperties"
+              sourceRelationship="http://schemas.openxmlformats.org/officedocument/2006/relationships/metadata/core-properties">
+      <contentType name="application/vnd.openxmlformats-package.core-properties+xml" />
+    </partType>
+    <partType name="FilePropertiesExtended"
+              description="Contains properties specific to an Office Open XML document."
+              rootNamespace="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties"
+              rootElement="Properties"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties">
+      <contentType name="application/vnd.openxmlformats-officedocument.extended-properties+xml"/>
+    </partType>
+    <partType name="FilePropertiesCustom"
+              description="Contains the names, types and values of custom file properties that apply to the package."
+              rootNamespace="http://schemas.openxmlformats.org/officeDocument/2006/custom-properties"
+              rootElement="Properties"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties">
+      <contentType name="application/vnd.openxmlformats-officedocument.custom-properties+xml" />
+    </partType>
+    <partType name="Font"
+              description="Contains a given font embedded directly into the document."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/font">
+      <contentType name="application/x-fontdata" />
+      <contentType name="application/x-font-ttf" />
+      <contentType name="application/vnd.openxmlformats-officedocument.obfuscatedFont" />
+    </partType>
+    <partType name="Image"
+              description="Contains an image file."
+              allowExternal="true"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image">
+    </partType>
+    <partType name="PrinterSettings"
+              description="Contains information about the initialization and environment of a printer or a display device."
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/printerSettings">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.printerSettings" />
+      <contentType name="application/vnd.openxmlformats-officedocument.wordprocessingml.printerSettings" />
+    </partType>
+    <partType name="Thumbnail"
+              description="Contains an image representing the package."
+              sourceRelationship="http://schemas.openxmlformats.org/package/2006/relationships/metadata/thumbnail">
+    </partType>
+    <partType name="Video"
+              description="Contains a video file."
+              allowExternal="true"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/video">
+    </partType>
+  </partTypes>
+  <links>
+    <link name="Hyperlink"
+          allowExternal="true"
+          sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" />
+  </links>
+</vocabulary>

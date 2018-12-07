@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vocabulary>
+  <supportingVocabularies>
+    <add name="DrawingML" />
+  </supportingVocabularies>
+  <globalReferences>
+    <reference name="Workbook" minOccurs="1" maxOccurs="1" />
+    <reference name="DigitalSignatureOrigin" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+  </globalReferences>
+  <partTypes>
+    <partType name="CalculationChain"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/calcChain">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.calcChain+xml" />
+    </partType>
+    <partType name="Chartsheet"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/chartsheet">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml" />
+      <reference name="Drawings" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="Comments"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml" />
+    </partType>
+    <partType name="Connections"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/connections">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.connections+xml" />
+    </partType>
+    <partType name="CustomProperty"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/customProperty">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.customProperty" />
+      <contentType name="application/xml" />
+    </partType>
+    <partType name="CustomXMLMappings"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/xmlMaps">
+      <contentType name="application/xml" />
+    </partType>
+    <partType name="Dialogsheet"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/dialogsheet">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml" />
+    </partType>
+    <partType name="Drawings"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/drawing">
+      <contentType name="application/vnd.openxmlformats-officedocument.drawing+xml" />
+    </partType>
+    <partType name="ExternalWorkbookReferences"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/externalLink">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.externalLink+xml" />
+    </partType>
+    <partType name="Metadata"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sheetMetadata">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.sheetMetadata+xml" />
+    </partType>
+    <partType name="PivotTable"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/pivotTable">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.pivotTable+xml" />
+      <reference name="PivotTableCacheDefinition" minOccurs="1" maxOccurs="1" />
+    </partType>
+    <partType name="PivotTableCacheDefinition"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/pivotCacheDefinition">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.pivotCacheDefinition+xml" />
+      <reference name="PivotTableCacheRecords" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="PivotTableCacheRecords"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/ pivotCacheRecords">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.pivotCacheRecords+xml" />
+    </partType>
+    <partType name="QueryTable"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/queryTable">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.queryTable+xml" />
+    </partType>
+    <partType name="SharedStringTable"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml" />
+    </partType>
+    <partType name="SharedWorkbookRevisionHeaders"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/revisionHeaders">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.revisionHeaders+xml" />
+      <reference name="SharedWorkbookRevisionLog" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="SharedWorkbookRevisionLog"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/revisionLog">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.revisionLog+xml" />
+    </partType>
+    <partType name="SharedWorkbookUserData"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/usernames">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.userNames+xml" />
+    </partType>
+    <partType name="SingleCellTableDefinitions"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/tableSingleCells">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.tableSingleCells+xml" />
+    </partType>
+    <partType name="Styles"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml" />
+    </partType>
+    <partType name="TableDefinition"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/table">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml" />
+      <reference name="QueryTable" minOccurs="1" maxOccurs="1" />
+    </partType>
+    <partType name="VolatileDependencies"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/volatileDependencies">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.volatileDependencies+xml" />
+    </partType>
+    <partType name="Workbook"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml" />
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml" />
+      <reference name="CalculationChain" minOccurs="0" maxOccurs="1" />
+      <reference name="Chartsheet" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Comments" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Connections" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLMappings" minOccurs="0" maxOccurs="1" />
+      <reference name="Dialogsheet" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="ExternalWorkbookReferences" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Metadata" minOccurs="0" maxOccurs="1" />
+      <reference name="PivotTableCacheDefinition" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="SharedStringTable" minOccurs="1" maxOccurs="1" />
+      <reference name="SharedWorkbookRevisionHeaders" minOccurs="0" maxOccurs="1" />
+      <reference name="SharedWorkbookUserData" minOccurs="0" maxOccurs="1" />
+      <reference name="Styles" minOccurs="0" maxOccurs="1" />
+      <reference name="VolatileDependencies" minOccurs="0" maxOccurs="1" />
+      <reference name="Worksheet" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="Worksheet"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet">
+      <contentType name="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml" />
+      <reference name="CustomProperty" minOccurs="0" maxOccurs="1" />
+      <reference name="Drawings" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="PivotTable" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="SingleCellTableDefinitions" minOccurs="0" maxOccurs="1" />
+      <reference name="TableDefinition" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+  </partTypes>
+</vocabulary>

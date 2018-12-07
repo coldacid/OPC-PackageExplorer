@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AddIn" elementFormDefault="qualified" targetNamespace="http://PackageExplorer/AddIn" xmlns="http://PackageExplorer/AddIn" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="AddIn">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Runtime" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence minOccurs="1" maxOccurs="unbounded">
+							<xs:element name="Assembly">
+								<xs:complexType>
+									<xs:attribute name="path" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Condition" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any minOccurs="1" maxOccurs="unbounded" processContents="lax" />
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Extension" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any minOccurs="1" maxOccurs="unbounded" processContents="lax" />
+						</xs:sequence>
+						<xs:attribute name="path" type="xs:string" use="required" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required" />
+			<xs:attribute name="author" type="xs:string" use="required" />
+			<xs:attribute name="copyright" type="xs:string" />
+			<xs:attribute name="url" type="xs:string" />
+			<xs:attribute name="description" type="xs:string" use="required" />
+			<xs:attribute name="version" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

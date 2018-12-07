@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<vocabulary>
+  <supportingVocabularies>
+    <add name="DrawingML" />
+  </supportingVocabularies>
+  <globalReferences>
+    <reference name="Presentation" minOccurs="1" maxOccurs="1" />
+    <reference name="DigitalSignatureOrigin" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+  </globalReferences>
+  <partTypes>
+    <partType name="CommentAuthors"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/commentAuthors">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.commentAuthors+xml" />
+    </partType>
+    <partType name="Comments"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/comments">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.comments+xml" />
+    </partType>
+    <partType name="HandoutMaster"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/handoutMaster">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.handoutMaster+xml" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="Audio" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType> 
+    <partType name="NotesMaster"
+               sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesMaster">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.notesMaster+xml" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="Audio" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="NotesSlide"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/notesSlide">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.notesSlide+xml" />
+      <reference name="NotesMaster" minOccurs="1" maxOccurs="1" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="Audio" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="Presentation"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml" />
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.slideshow.main+xml" />
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.template.main+xml" />
+      <reference name="CommentAuthors" minOccurs="0" maxOccurs="1" />
+      <reference name="HandoutMaster" minOccurs="0" maxOccurs="1" />
+      <reference name="NotesMaster" minOccurs="0" maxOccurs="1" />
+      <reference name="PresentationProperties" minOccurs="1" maxOccurs="1" />
+      <reference name="Slide" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="SlideMaster" minOccurs="1" maxOccurs="unbounded" />
+      <reference name="UserDefinedTags" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="ViewProperties" minOccurs="0" maxOccurs="1" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+    </partType>
+    <partType name="PresentationProperties"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/presProps">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.presProps+xml" />
+    </partType>
+    <partType name="Slide"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slide">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.slide+xml" />
+      <reference name="Comments" minOccurs="0" maxOccurs="1" />
+      <reference name="NotesSlide" minOccurs="0" maxOccurs="1" />
+      <reference name="SlideLayout" minOccurs="1" maxOccurs="1" />
+      <reference name="SlideSynchronizationData" minOccurs="0" maxOccurs="1" />
+      <reference name="UserDefinedTags" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="Audio" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="SlideLayout"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml" />
+      <reference name="SlideMaster" minOccurs="1" maxOccurs="1" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="Audio" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="SlideMaster"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml" />
+      <reference name="SlideLayout" minOccurs="1" maxOccurs="unbounded" />
+      <reference name="AdditionalCharacteristics" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="Audio" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="Bibliography" vocabulary="Shared" minOccurs="0" maxOccurs="1" />
+      <reference name="CustomXMLDataStorage" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+      <reference name="EmbeddedControlPersistence" vocabulary="Shared" minOccurs="0" maxOccurs="unbounded" />
+    </partType>
+    <partType name="SlideSynchronizationData"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideUpdateInfo">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.slideUpdateInfo+xml" />
+    </partType>
+    <partType name="UserDefinedTags"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/tags">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.tags+xml" />
+    </partType>
+    <partType name="ViewProperties"
+              sourceRelationship="http://schemas.openxmlformats.org/officeDocument/2006/relationships/viewProps">
+      <contentType name="application/vnd.openxmlformats-officedocument.presentationml.viewProps+xml" />
+    </partType>
+  </partTypes>
+</vocabulary>

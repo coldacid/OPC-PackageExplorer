@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Package Explorer start page</title>
+	
+	
+	<style type="text/css">
+	<!--
+	body {
+		font-family: Calibri, Arial, Helvetica, sans-serif;
+		font-size: small;
+		background-image: url(res://PackageExplorer.StartPage.dll/#2/BACKGROUND.BMP);
+		background-color: #CCCCCC;
+		background-repeat: repeat-x;
+	}
+	
+	fieldset {
+	    background-image: url(res://PackageExplorer.StartPage.dll/#2/FIELDSETBACKGROUND.BMP);
+		background-color: #FFFFFF;
+		background-repeat: repeat-x;
+		padding: 5px;
+	}
+		
+		fieldset h1 {
+			font-size: large;
+			font-weight: bold;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			border-bottom-color: #333333;
+			background-color: #CCCCCC;
+			white-space:nowrap;
+			background-image: url(res://PackageExplorer.StartPage.dll/#2/FIELDSETLABELBACKGROUND.BMP);
+			background-repeat: no-repeat;
+		}
+		
+	a, a.visited, a.active {
+		color: #CFCFCF;
+		color: #000066;
+	}
+	
+	#Logo {
+		width: 300px;
+	}
+	
+	#LeftPane {
+	    position: absolute;
+	    left: .5em;
+	    top: 90px;		
+		width: 15em;
+	}
+	
+	#MiddlePane {
+	    top: 90px;	
+		position:absolute;
+	    margin-left: 15.5em;
+	    margin-right: 3.5em;
+	}
+	
+	#RightPane {
+		position:absolute;
+		right: .5 em;
+		top: 90px;
+		width: 3em;
+	}
+	
+	#RecentDocuments {
+	}
+	
+		#RecentDocuments #FileList {
+			list-style-type: none;
+			margin: .3em;
+		}
+	
+	#CommonTasks {
+		margin-top: 1em;
+	}
+	
+		#CommonTasks #TaskList {
+			list-style-type: none;
+			margin: .3em;
+		}
+	
+	#WhatsNew {
+	}
+		#WhatsNew #RSSList {
+			list-style-type: none;
+			margin: .3em;	
+		}
+		
+			#WhatsNew #RSSList h2 {
+				font-size: medium;
+			}
+			
+	span.datetime {
+	    font-size: x-small;
+	    color: #666666;
+	    font-variant: small-caps;
+	}
+
+	-->
+	</style>
+	
+	<script type="text/javascript">
+	var windowProxy = window.external;   
+	var recentDocumentItems = new Array();
+	
+	function ShowOpenDialog()
+	{
+		windowProxy.ExecuteCommand("File.OpenDocument");
+	}
+	function ShowCreateDialog()
+	{
+		windowProxy.ExecuteCommand("DocumentFactory.NewDocument");
+	}  
+	
+	function OpenRecentDocument(path)
+	{
+	    windowProxy.OpenRecentDocument(path);
+	}
+	
+	function InitializeDocument()
+	{
+	    CreateRecentDocumentList();
+	    windowProxy.BeginFeedGathering();
+	}
+	
+	function CreateRecentDocumentList()
+	{
+	    var fileList = document.all.FileList;
+	    
+	    var itemCount = windowProxy.GetRecentDocumentCount();
+	    var count=0;
+	    for(count=0; count < itemCount; count++)
+	    {
+	        var title = windowProxy.GetRecentDocumentTitle(count);
+	        var path = windowProxy.GetRecentDocumentPath(count);
+	        recentDocumentItems[count] = path;
+	        var listItem = document.createElement("li");	       
+	        var listItemLink = document.createElement("a");
+	        listItemLink.innerText = title;	 
+	        listItemLink.attachEvent("onclick", CreateRecentDocumentClickHandler(path));
+	        var listItemHRefAttribute = document.createAttribute("href");
+	        listItemHRefAttribute.value = "about:blank";
+	        listItemLink.setAttributeNode(listItemHRefAttribute);
+	        listItem.appendChild(listItemLink);
+	        fileList.appendChild(listItem);
+	    }	    
+	}
+	
+	function AddMessage(messageText)
+	{
+        var listItem = document.createElement("li");	       
+        var message = document.createElement("span");
+        message.style.fontStyle = "italic";
+        message.innerText = messageText;
+        listItem.appendChild(message);
+        window.RSSList.appendChild(listItem);
+	}
+	
+	function CreateRSSMessage(title, href, description)
+	{	
+        var listItem = window.document.createElement("li");
+        var messageLink = document.createElement("a");
+        var messageTitle = document.createElement("h2");
+        var messageBodyContainer = document.createElement("p");	        
+        listItem.appendChild(messageTitle);
+        messageTitle.appendChild(messageLink);
+        messageLink.innerText = title;
+        messageLink.setAttribute("href", href);  
+        listItem.appendChild(messageBodyContainer);	        
+        messageBodyContainer.innerText = description;
+        window.RSSList.appendChild(listItem);	
+	}
+	
+		
+	function CreateRecentDocumentClickHandler(path)
+	{
+	    return function()
+	    {
+	        OpenRecentDocument(path);
+	    }
+	}
+	
+	</script>
+</head>
+
+<body onload="InitializeDocument()">
+    <a id="test" />
+	<div id="Logo">
+	    <span id="test"/>
+		<a href="http://www.codeplex.com/PackageExplorer"><img src="res://PackageExplorer.StartPage.dll/#2/LOGO.BMP" alt="PackageExplorer" width="300" height="70" border="0" /></a>
+	</div>
+	<div id="LeftPane">
+		<fieldset id="RecentDocuments">
+			<h1>&nbsp;Recent documents</h1>
+			<ul id="FileList">
+			</ul>
+	  </fieldset>
+		 <fieldset id="CommonTasks">
+			<h1>&nbsp;Common tasks</h1>
+			<ul id="TaskList">
+				<li><a href="about:blank" onclick="ShowOpenDialog();">Open document...</a></li>
+				<li><a href="about:blank" onclick="ShowCreateDialog();">Create document...</a></li>
+			</ul>
+			<form id="donateForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input type="hidden" name="hosted_button_id" value="2461095" />
+                <input type="image" src="https://www.paypal.com/nl_NL/NL/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="" />
+                <img alt="" border="0" src="https://www.paypal.com/nl_NL/i/scr/pixel.gif" width="1" height="1" />
+            </form>
+
+		 </fieldset>
+	</div>
+	<div id="MiddlePane">
+		<fieldset id="WhatsNew">
+			<h1>&nbsp;What's new?</h1>
+			<ul id="RSSList">
+			</ul>
+		</fieldset>
+	</div>
+	<div id="RightPane"></div>
+</body>
+</html>

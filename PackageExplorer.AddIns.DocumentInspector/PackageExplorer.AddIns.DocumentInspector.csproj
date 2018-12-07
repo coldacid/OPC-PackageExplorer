@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{39D62BDC-0364-4C64-B335-B44CE8ED2B92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PackageExplorer.AddIns.DocumentInspector</RootNamespace>
+    <AssemblyName>PackageExplorer.AddIns.DocumentInspector</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\PackageExplorer.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\PackageExplorer\bin\Debug\AddIns\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\PackageExplorer\bin\Release\AddIns\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PackageExplorer.Core\PackageExplorer.Core.csproj">
+      <Project>{9D9D095D-7E60-40FA-B837-E506C608203D}</Project>
+      <Name>PackageExplorer.Core</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PackageExplorer\PackageExplorer.csproj">
+      <Project>{21172671-1423-4CE4-AB99-9C6FF0555B3D}</Project>
+      <Name>PackageExplorer</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DocumentInspectorControl.resx">
+      <DependentUpon>DocumentInspectorControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageResources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Commands\BrowseWithCommand.cs" />
+    <Compile Include="Commands\CopyRelationshipIDCommand.cs" />
+    <Compile Include="Commands\DisplayFoldersCommand.cs" />
+    <Compile Include="Commands\DisplayRelationshipsCommand.cs" />
+    <Compile Include="Commands\DisplayVocabularyCommand.cs" />
+    <Compile Include="Commands\OpenPartCommand.cs" />
+    <Compile Include="Commands\ShowPackagingErrorsCommand.cs" />
+    <Compile Include="Commands\SignDocumentCommand.cs" />
+    <Compile Include="Commands\ToggleFlatModeCommand.cs" />
+    <Compile Include="Commands\ViewDocumentInspectorCommand.cs" />
+    <Compile Include="Commands\ViewRelationshipsCommand.cs" />
+    <Compile Include="Commands\ViewSignaturesCommand.cs" />
+    <Compile Include="DisplayModes.cs" />
+    <Compile Include="DocumentInspectorControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DocumentInspectorNodeType.cs" />
+    <Compile Include="DocumentInspectorSettings.cs" />
+    <Compile Include="DocumentInspectorTreeNode.cs" />
+    <Compile Include="DocumentNode.cs" />
+    <Compile Include="DocumentPartNode.cs" />
+    <Compile Include="ExternalRelationshipNode.cs" />
+    <Compile Include="FlatModeStateCondition.cs" />
+    <Compile Include="ReferencesNode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PackageExplorer.AddIns.DocumentInspector.addin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\BrowseWithWeb.png" />
+    <Content Include="Resources\BrowseWithXml.png" />
+    <Content Include="Resources\DisplayMode.png" />
+  </ItemGroup>
+</Project>

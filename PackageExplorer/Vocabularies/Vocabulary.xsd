@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://PackageExplorer/Vocabulary"
+           targetNamespace="http://PackageExplorer/Vocabulary"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+  <xs:simpleType name="ST_ReferenceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="implicit" />
+      <xs:enumeration value="explicit" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CT_Reference">
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="minOccurs" type="xs:unsignedByte" use="required" />
+    <xs:attribute name="maxOccurs" type="xs:string" use="required" />
+    <xs:attribute name="type" type="ST_ReferenceType" use="required" />
+    <xs:attribute name="vocabulary" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="CT_ContentType">
+    <xs:attribute name="name" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="CT_PartType">
+    <xs:sequence>
+      <xs:element name="contentType" type="CT_ContentType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="reference" type="CT_Reference" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="linkReference" type="CT_Reference" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="commonLocation" type="xs:string" use="optional" />
+    <xs:attribute name="allowExternal" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="allowInteral" type="xs:boolean" use="optional" default="true" />
+    <xs:attribute name="sourceRelationship" type="xs:string" use="required" />
+    <xs:attribute name="rootNamespace" type="xs:string" use="optional" />
+    <xs:attribute name="rootElement" type="xs:string" use="optional" />
+    <xs:attribute name="description" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="CT_Link">
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="allowExternal" type="xs:boolean" use="optional" default="true" />
+    <xs:attribute name="allowInteral" type="xs:boolean" use="optional" default="false" />
+    <xs:attribute name="sourceRelationship" type="xs:string" use="required" />
+    <xs:attribute name="description" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="CT_Links">
+    <xs:sequence>
+      <xs:element name="link" type="CT_Link" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CT_PartTypes">
+    <xs:sequence>
+      <xs:element name="partType" type="CT_PartType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CT_SupportingVocabulary">
+    <xs:attribute name="name" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="CT_SupportingVocabularies">
+    <xs:sequence>
+      <xs:element name="vocabulary" type="CT_SupportingVocabulary" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CT_GlobalReferences">
+    <xs:sequence>
+      <xs:element name="reference" type="CT_Reference" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CT_Vocabulary">
+    <xs:sequence>
+      <xs:element name="supportingVocabularies" type="CT_SupportingVocabularies" minOccurs="1" maxOccurs="1" />
+      <xs:element name="globalReferences" type="CT_GlobalReferences" minOccurs="1" maxOccurs="1" />
+      <xs:element name="partTypes" type="CT_PartTypes" minOccurs="1" maxOccurs="1" />
+      <xs:element name="links" type="CT_Links" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required" />
+    <xs:attribute name="startPart" type="xs:string" use="optional" />
+  </xs:complexType>
+  <xs:element name="vocabulary" type="CT_Vocabulary" />
+</xs:schema>

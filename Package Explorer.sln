@@ -1,0 +1,163 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External References", "External References", "{9833A38F-2125-48FE-8A03-9E85D0F7F7C5}"
+	ProjectSection(SolutionItems) = preProject
+		External References\ICSharpCode.SharpZipLib.dll = External References\ICSharpCode.SharpZipLib.dll
+		External References\ICSharpCode.TextEditor.dll = External References\ICSharpCode.TextEditor.dll
+		External References\WeifenLuo.WinFormsUI.Docking.dll = External References\WeifenLuo.WinFormsUI.Docking.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DFC446BD-E519-40D2-9026-7A8E074E4062}"
+	ProjectSection(SolutionItems) = preProject
+		Solution Items\Logo.png = Solution Items\Logo.png
+		Solution Items\PackageExplorer.design = Solution Items\PackageExplorer.design
+		Solution Items\PackageExplorer.ICO = Solution Items\PackageExplorer.ICO
+		Solution Items\PackageExplorer_16x16.png = Solution Items\PackageExplorer_16x16.png
+		Solution Items\PackageExplorer_24x24.png = Solution Items\PackageExplorer_24x24.png
+		Solution Items\PackageExplorer_32x32.png = Solution Items\PackageExplorer_32x32.png
+		Solution Items\PackageExplorer_48x48.png = Solution Items\PackageExplorer_48x48.png
+		Solution Items\PackageExplorer_64x64.png = Solution Items\PackageExplorer_64x64.png
+		Solution Items\Sample.docx = Solution Items\Sample.docx
+		Solution Items\SplashBackground.png = Solution Items\SplashBackground.png
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer", "PackageExplorer\PackageExplorer.csproj", "{21172671-1423-4CE4-AB99-9C6FF0555B3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.DocumentInspector", "PackageExplorer.AddIns.DocumentInspector\PackageExplorer.AddIns.DocumentInspector.csproj", "{39D62BDC-0364-4C64-B335-B44CE8ED2B92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.TextEditor", "PackageExplorer.AddIns.TextEditor\PackageExplorer.AddIns.TextEditor.csproj", "{0FBDF885-8292-4946-8A3F-CD296429A0DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.PropertyInspector", "PackageExplorer.AddIns.PropertyInspector\PackageExplorer.AddIns.PropertyInspector.csproj", "{E9BABB13-D13E-4D43-ACD0-BF7ED74F9EFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.ValidationInspector", "PackageExplorer.AddIns.ValidationInspector\PackageExplorer.AddIns.ValidationInspector.csproj", "{9245A7C6-0B18-432F-A02F-FFCD17E659B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.ImageEditor", "PackageExplorer.AddIns.ImageEditor\PackageExplorer.AddIns.ImageEditor.csproj", "{955BB063-C48F-48C4-909B-00BC5586562A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.AddInScout", "PackageExplorer.AddIns.AddInScout\PackageExplorer.AddIns.AddInScout.csproj", "{E108B23F-7D65-4F30-BA7B-C477EC2C586A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.XmlEditor", "PackageExplorer.AddIns.XmlEditor\PackageExplorer.AddIns.XmlEditor.csproj", "{AE92BD92-3024-4071-AA1A-B752FC542C05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.Core", "PackageExplorer.Core\PackageExplorer.Core.csproj", "{9D9D095D-7E60-40FA-B837-E506C608203D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.StartPage", "PackageExplorer.StartPage\PackageExplorer.StartPage.csproj", "{7C718843-DD32-4087-AB8A-C2B3C592B640}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.BrowserEditor", "PackageExplorer.AddIns.BrowserEditor\PackageExplorer.AddIns.BrowserEditor.csproj", "{A7CD6C2B-B7B0-4A39-A7EA-A73B964639D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.AddIns.DocumentFactory", "PackageExplorer.AddIns.DocumentFactory\PackageExplorer.AddIns.DocumentFactory.csproj", "{1A6A30CE-C30B-4900-A569-55C5E2AD63FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Signing Key", "Signing Key", "{A035B928-201C-4C09-9786-4FCA39A48837}"
+	ProjectSection(SolutionItems) = preProject
+		PackageExplorer.pfx = PackageExplorer.pfx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageExplorer.Tools.Validation", "PackageExplorer.Tools.Validation\PackageExplorer.Tools.Validation.csproj", "{0773CC23-A165-41CB-8F50-76D5422DEC03}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 14
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs01.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PackageExplorer.AddIns.AddInScout\\PackageExplorer.AddIns.AddInScout.csproj
+		SccProjectName1 = PackageExplorer.AddIns.AddInScout
+		SccLocalPath1 = PackageExplorer.AddIns.AddInScout
+		SccProjectUniqueName2 = PackageExplorer.AddIns.DocumentInspector\\PackageExplorer.AddIns.DocumentInspector.csproj
+		SccProjectName2 = PackageExplorer.AddIns.DocumentInspector
+		SccLocalPath2 = PackageExplorer.AddIns.DocumentInspector
+		SccProjectUniqueName3 = PackageExplorer.AddIns.ImageEditor\\PackageExplorer.AddIns.ImageEditor.csproj
+		SccProjectName3 = PackageExplorer.AddIns.ImageEditor
+		SccLocalPath3 = PackageExplorer.AddIns.ImageEditor
+		SccProjectUniqueName4 = PackageExplorer.AddIns.PropertyInspector\\PackageExplorer.AddIns.PropertyInspector.csproj
+		SccProjectName4 = PackageExplorer.AddIns.PropertyInspector
+		SccLocalPath4 = PackageExplorer.AddIns.PropertyInspector
+		SccProjectUniqueName5 = PackageExplorer.AddIns.TextEditor\\PackageExplorer.AddIns.TextEditor.csproj
+		SccProjectName5 = PackageExplorer.AddIns.TextEditor
+		SccLocalPath5 = PackageExplorer.AddIns.TextEditor
+		SccProjectUniqueName6 = PackageExplorer.AddIns.ValidationInspector\\PackageExplorer.AddIns.ValidationInspector.csproj
+		SccProjectName6 = PackageExplorer.AddIns.ValidationInspector
+		SccLocalPath6 = PackageExplorer.AddIns.ValidationInspector
+		SccProjectUniqueName7 = PackageExplorer.AddIns.XmlEditor\\PackageExplorer.AddIns.XmlEditor.csproj
+		SccProjectName7 = PackageExplorer.AddIns.XmlEditor
+		SccLocalPath7 = PackageExplorer.AddIns.XmlEditor
+		SccProjectUniqueName8 = PackageExplorer\\PackageExplorer.csproj
+		SccProjectName8 = PackageExplorer
+		SccLocalPath8 = PackageExplorer
+		SccProjectUniqueName9 = PackageExplorer.Core\\PackageExplorer.Core.csproj
+		SccProjectName9 = PackageExplorer.Core
+		SccLocalPath9 = PackageExplorer.Core
+		SccProjectUniqueName10 = PackageExplorer.StartPage\\PackageExplorer.StartPage.csproj
+		SccProjectName10 = PackageExplorer.StartPage
+		SccLocalPath10 = PackageExplorer.StartPage
+		SccProjectUniqueName11 = PackageExplorer.AddIns.BrowserEditor\\PackageExplorer.AddIns.BrowserEditor.csproj
+		SccProjectName11 = PackageExplorer.AddIns.BrowserEditor
+		SccLocalPath11 = PackageExplorer.AddIns.BrowserEditor
+		SccProjectUniqueName12 = PackageExplorer.AddIns.DocumentFactory\\PackageExplorer.AddIns.DocumentFactory.csproj
+		SccProjectName12 = PackageExplorer.AddIns.DocumentFactory
+		SccLocalPath12 = PackageExplorer.AddIns.DocumentFactory
+		SccProjectUniqueName13 = PackageExplorer.Tools.Validation\\PackageExplorer.Tools.Validation.csproj
+		SccProjectName13 = PackageExplorer.Tools.Validation
+		SccLocalPath13 = PackageExplorer.Tools.Validation
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21172671-1423-4CE4-AB99-9C6FF0555B3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21172671-1423-4CE4-AB99-9C6FF0555B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21172671-1423-4CE4-AB99-9C6FF0555B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21172671-1423-4CE4-AB99-9C6FF0555B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39D62BDC-0364-4C64-B335-B44CE8ED2B92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D62BDC-0364-4C64-B335-B44CE8ED2B92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D62BDC-0364-4C64-B335-B44CE8ED2B92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D62BDC-0364-4C64-B335-B44CE8ED2B92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FBDF885-8292-4946-8A3F-CD296429A0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBDF885-8292-4946-8A3F-CD296429A0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBDF885-8292-4946-8A3F-CD296429A0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBDF885-8292-4946-8A3F-CD296429A0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9BABB13-D13E-4D43-ACD0-BF7ED74F9EFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9BABB13-D13E-4D43-ACD0-BF7ED74F9EFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9BABB13-D13E-4D43-ACD0-BF7ED74F9EFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9BABB13-D13E-4D43-ACD0-BF7ED74F9EFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9245A7C6-0B18-432F-A02F-FFCD17E659B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9245A7C6-0B18-432F-A02F-FFCD17E659B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9245A7C6-0B18-432F-A02F-FFCD17E659B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9245A7C6-0B18-432F-A02F-FFCD17E659B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{955BB063-C48F-48C4-909B-00BC5586562A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{955BB063-C48F-48C4-909B-00BC5586562A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{955BB063-C48F-48C4-909B-00BC5586562A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{955BB063-C48F-48C4-909B-00BC5586562A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E108B23F-7D65-4F30-BA7B-C477EC2C586A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E108B23F-7D65-4F30-BA7B-C477EC2C586A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E108B23F-7D65-4F30-BA7B-C477EC2C586A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E108B23F-7D65-4F30-BA7B-C477EC2C586A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE92BD92-3024-4071-AA1A-B752FC542C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE92BD92-3024-4071-AA1A-B752FC542C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE92BD92-3024-4071-AA1A-B752FC542C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE92BD92-3024-4071-AA1A-B752FC542C05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D9D095D-7E60-40FA-B837-E506C608203D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D9D095D-7E60-40FA-B837-E506C608203D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D9D095D-7E60-40FA-B837-E506C608203D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D9D095D-7E60-40FA-B837-E506C608203D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C718843-DD32-4087-AB8A-C2B3C592B640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C718843-DD32-4087-AB8A-C2B3C592B640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C718843-DD32-4087-AB8A-C2B3C592B640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C718843-DD32-4087-AB8A-C2B3C592B640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7CD6C2B-B7B0-4A39-A7EA-A73B964639D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7CD6C2B-B7B0-4A39-A7EA-A73B964639D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7CD6C2B-B7B0-4A39-A7EA-A73B964639D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7CD6C2B-B7B0-4A39-A7EA-A73B964639D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6A30CE-C30B-4900-A569-55C5E2AD63FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6A30CE-C30B-4900-A569-55C5E2AD63FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6A30CE-C30B-4900-A569-55C5E2AD63FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6A30CE-C30B-4900-A569-55C5E2AD63FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0773CC23-A165-41CB-8F50-76D5422DEC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0773CC23-A165-41CB-8F50-76D5422DEC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0773CC23-A165-41CB-8F50-76D5422DEC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0773CC23-A165-41CB-8F50-76D5422DEC03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

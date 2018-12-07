@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+	name="Package Explorer Validation Inspector"
+	author="Wouter van Vugt"
+	copyright="(C) Wouter van Vugt 2007"
+	description="The Package Explorer Validation Inspector addin"
+	url="http://codeplex.com/packageexplorer"
+	version="1.0.0.0">
+
+	<a:Runtime>
+		<a:Assembly path="PackageExplorer.AddIns.ValidationInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+	</a:Runtime>
+
+  <a:Condition name="HasValidationPackages">
+    <HasValidationPackages />
+  </a:Condition>
+  
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="ValidationInspector"
+					resourceGroup="ValidationInspector"
+					assemblyName="PackageExplorer.AddIns.ValidationInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/services">
+		<Class id="validationService"
+			   class="PackageExplorer.AddIns.ValidationInspector.DefaultValidationService"
+			   insertAfter="SettingsService" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/inspectors">
+		<Inspector id="validationInspector"
+				   inspectorID="{B3E58BDC-612D-40ec-84FF-085B66809D2C}"
+				   defaultDockState="DockBottomAutoHide" 
+				   startupDockState="DockBottomAutoHide" 
+					inspectorMenuTreePath="/workspace/validationInspector/toolStrips/commandMenu"
+				   class="PackageExplorer.AddIns.ValidationInspector.ValidationInspectorControl"
+				   title="{RES: ValidationInspector, Title}">
+		</Inspector>
+	</a:Extension>
+
+	<a:Extension path="/workspace/optionPanels">
+		<OptionPanel id="validationRootPanel"
+			title="{RES: ValidationInspector, Title}"
+			defaultChildPane="validationSettingsPanel">
+			<OptionPanel id="validationSettingsPanel"
+						 title="{RES: ValidationInspector, SettingsPanelTitle}"
+						 class="PackageExplorer.AddIns.ValidationInspector.ValidationOptionsPanel" />
+			<OptionPanel id="customSchemasPanel"
+						 title="{RES: ValidationInspector, CustomSchemaPanelTitle}"
+						 class="PackageExplorer.AddIns.ValidationInspector.CustomSchemaSettingsPanel" />			
+		</OptionPanel>
+	</a:Extension>
+
+	<a:Extension path="/workspace/commands">
+		<Class id="viewValidationInspector"
+			class="PackageExplorer.AddIns.ValidationInspector.ViewValidationInspectorCommand" />
+		<Class id="validatePart"
+			class="PackageExplorer.AddIns.ValidationInspector.ValidateDocumentPartCommand" />
+		<Class id="validateDocument"
+			class="PackageExplorer.AddIns.ValidationInspector.ValidateDocumentCommand" />
+		<Class id="clearValidationInspector"
+			   class="PackageExplorer.AddIns.ValidationInspector.ClearCommand" />
+	</a:Extension>
+
+	<a:Extension path="/workspace/validationInspector/toolStrips">
+		<ToolStrip id="commandMenu">
+			<ToolStripMenuItem id="clear"
+				                 title="{RES: ValidationInspector, ClearDataCommand}"
+				                 commandName="ValidationInspector.Clear" />
+      <Condition ref="HasValidationPackages" action="Disable">
+        <ToolStripComboBox id="validationPackagePicker"
+                           selectionGroup="ValidationPackage"
+                           DropDownWidth="170">
+          <ComboBoxBuilder id="validationPackagesBuilder"
+                           class="PackageExplorer.AddIns.ValidationInspector.ValidationPackageComboBoxBuilder" />
+        </ToolStripComboBox>
+      </Condition>
+    </ToolStrip>
+	</a:Extension>
+
+	<a:Extension path="/workspace/documentInspector/toolStrips/documentContextStrip"> 
+    <Condition ref="HasValidationPackages" action="Disable">
+      <ToolStripMenuItem id="validateDocument"
+                         title="{RES: ValidationInspector, ValidateCommand}"
+                         commandName="ValidationInspector.ValidateDocument"
+                         insertBefore="separator2"
+                         insertAfter="sign" />
+    </Condition>
+	</a:Extension>
+
+	<a:Extension path="/workspace/documentInspector/toolStrips/documentPartContextStrip">
+    <ToolStripSeparator id="separatorValidator" insertAfter="removeFromParent" />
+    <Condition ref="HasValidationPackages" action="Disable">
+      <ToolStripMenuItem id="validateDocumentPart"
+						             title="{RES: ValidationInspector, ValidateCommand}"
+						             commandName="ValidationInspector.ValidatePart"
+						             insertAfter="separatorValidator"  />
+    </Condition>
+	</a:Extension>
+
+	<a:Extension path="/workspace/toolStrips/mainMenu/view">
+		<ToolStripMenuItem id="validationInspector"
+			                 title="{RES: ValidationInspector, Title}"
+			                 shortcutKeys="Control, Shift, D"
+			                 insertBefore="separator1"
+			                 commandName="View.ValidationInspector" />
+	</a:Extension>
+
+</a:AddIn>

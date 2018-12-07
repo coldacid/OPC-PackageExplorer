@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<partUris>
+  <vocabulary name="WordprocessingML">
+    <partUri partName="MainDocument"
+             location="/word/document.xml" />
+    <partUri partName="WebSettings"
+             location="/word/webSettings.xml" />
+    <partUri partName="StyleDefinitions"
+             location="/word/styles.xml" />
+    <partUri partName="DocumentSettings"
+             location="/word/settings.xml" />
+    <partUri partName="FontTable"
+             location="/word/fontTable.xml" />
+    <partUri partName="AlternativeFormatImport"
+             location="/word/aFChunk.html" />
+    <partUri partName="Header"
+             location="/word/header.xml" />
+    <partUri partName="Footer"
+             location="/word/footer.xml" />
+    <partUri partName="EndNotes"
+             location="/word/endnotes.xml" />
+    <partUri partName="FootNotes"
+             location="/word/footnotes.xml" />
+    <partUri partName="Comments"
+             location="/word/comments.xml" />
+    <partUri partName="GlossaryDocument"
+             location="/word/glossary/document.xml" />
+    <partUri partName="NumberingDefinitions"
+             location="/word/numbering.xml" />
+
+    
+    <partUri partName="FilePropertiesCore"
+             partVocabulary="Shared"
+             location="/docProps/core.xml" />
+    <partUri partName="FilePropertiesExtended"
+             partVocabulary="Shared"
+             location="/docProps/app.xml" />
+    <partUri partName="FilePropertiesCustom"
+             partVocabulary="Shared"
+             location="/docProps/cust.xml" />
+    <partUri partName="Image"
+             partVocabulary="Shared"
+             location="/word/media/image1.gif" />
+    <partUri partName="EmbeddedObject"
+             partVocabulary="Shared"
+             location="/word/embeddings/oleObject.bin" />
+    <partUri partName="EmbeddedPackage"
+             partVocabulary="Shared"
+             location="/word/embeddings/package.bin" />
+    
+    
+    
+    <partUri partName="Theme"
+             partVocabulary="DrawingML"
+             location="/word/theme/theme.xml" />
+    <partUri partName="Chart"
+             partVocabulary="DrawingML"
+             location="/word/charts/chart.xml" />
+  </vocabulary>
+</partUris>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+	name="Package Explorer Text Editor"
+	author="Wouter van Vugt"
+	copyright="(C) Wouter van Vugt 2007"
+	description="The Package Explorer Text Editor addin"
+	url="http://codeplex.com/packageexplorer"
+	version="1.0.0.0">
+
+	<a:Runtime>
+		<a:Assembly path="PackageExplorer.AddIns.ImageEditor, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+	</a:Runtime>
+
+	<a:Extension path="/core/resources">
+		<ResourceLibrary id="ImageEditor"
+					resourceGroup="ImageEditor"
+					assemblyName="PackageExplorer.AddIns.ImageEditor, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f"
+					resourceBaseName="StringResources" />
+	</a:Extension>
+	
+	<a:Extension path="/workspace/editors">
+		<Editor id="imageEditor"
+				title="{RES: ImageEditor, Title}"
+				class="PackageExplorer.AddIns.ImageEditor.ContentEditor"
+				supportedTypes="Image" />
+	</a:Extension>
+	
+</a:AddIn>

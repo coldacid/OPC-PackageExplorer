@@ -1,0 +1,503 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21172671-1423-4CE4-AB99-9C6FF0555B3D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PackageExplorer</RootNamespace>
+    <AssemblyName>PackageExplorer</AssemblyName>
+    <StartupObject>
+    </StartupObject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\PackageExplorer.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.1.2794.23674, Culture=neutral, PublicKeyToken=ca0af21bc3bb7a3c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External References\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\CloseActiveTabCommand.cs" />
+    <Compile Include="Commands\CloseAllButActiveCommand.cs" />
+    <Compile Include="Commands\CloseAllTabsCommand.cs" />
+    <Compile Include="Commands\CloseDocumentCommand.cs" />
+    <Compile Include="Commands\CommandBase.cs" />
+    <Compile Include="Commands\CopyCommand.cs" />
+    <Compile Include="Commands\CutCommand.cs" />
+    <Compile Include="Commands\NewBrowserCommand.cs" />
+    <Compile Include="Commands\OpenDocumentCommand.cs" />
+    <Compile Include="Commands\OpenFileCommand.cs" />
+    <Compile Include="Commands\OpenInShellCommand.cs" />
+    <Compile Include="Commands\PasteCommand.cs" />
+    <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\ResetWindowLayoutCommand.cs" />
+    <Compile Include="Commands\RunFirstTimeStartupCommandBase.cs" />
+    <Compile Include="Commands\SaveActiveDocumentTabsCommand.cs" />
+    <Compile Include="Commands\SaveAsCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
+    <Compile Include="Commands\SaveTabCommand.cs" />
+    <Compile Include="Commands\SelectAllCommand.cs" />
+    <Compile Include="Commands\ShowAboutDialogCommand.cs" />
+    <Compile Include="Commands\ShowOptionsDialogCommand.cs" />
+    <Compile Include="Commands\StartWorkbenchCommand.cs" />
+    <Compile Include="IDynamicSplashScreen.cs" />
+    <Compile Include="ImageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ImageResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="InitializationException.cs" />
+    <Compile Include="ObjectModel\Application.cs" />
+    <Compile Include="ObjectModel\CollectionBase.cs" />
+    <Compile Include="ObjectModel\CommandCollection.cs" />
+    <Compile Include="ObjectModel\Document.cs" />
+    <Compile Include="ObjectModel\DocumentBuilder.cs" />
+    <Compile Include="ObjectModel\DocumentCollection.cs" />
+    <Compile Include="ObjectModel\DocumentPart.cs" />
+    <Compile Include="ObjectModel\DocumentPartCollection.cs" />
+    <Compile Include="ObjectModel\DocumentPartEventArgs.cs" />
+    <Compile Include="ObjectModel\DocumentSignatureManager.cs" />
+    <Compile Include="ObjectModel\DublinCoreProperties.cs" />
+    <Compile Include="ObjectModel\DuplicateRelationshipIDException.cs" />
+    <Compile Include="ObjectModel\Extension\PackageExtensions.cs" />
+    <Compile Include="ObjectModel\ExternalRelationship.cs" />
+    <Compile Include="ObjectModel\ExternalRelationshipCollection.cs" />
+    <Compile Include="ObjectModel\ExternalRelationshipEventArgs.cs" />
+    <Compile Include="ObjectModel\HasDocumentCondition.cs" />
+    <Compile Include="ObjectModel\HasDocumentPartRelationshipPartCondition.cs" />
+    <Compile Include="ObjectModel\HasDocumentRelationshipPartCondition.cs" />
+    <Compile Include="ObjectModel\HasPackagingErrorsCondition.cs" />
+    <Compile Include="ObjectModel\IRelatable.cs" />
+    <Compile Include="ObjectModel\IActivatable.cs" />
+    <Compile Include="ObjectModel\ItemBase.cs" />
+    <Compile Include="ObjectModel\ItemEventArgs.cs" />
+    <Compile Include="ObjectModel\ObjectModelException.cs" />
+    <Compile Include="ObjectModel\PackageDocumentPart.cs" />
+    <Compile Include="ObjectModel\PackagingError.cs" />
+    <Compile Include="ObjectModel\PackagingErrorCollection.cs" />
+    <Compile Include="ObjectModel\RelationshipPart.cs" />
+    <Compile Include="ObjectModel\SelectableCollectionBase.cs" />
+    <Compile Include="ObjectModel\SelectableItemBase.cs" />
+    <Compile Include="ObjectModel\Vocabulary\ExtensionMethods.cs" />
+    <Compile Include="ObjectModel\Vocabulary\Vocabulary.cs" />
+    <Compile Include="ObjectModel\Vocabulary\VocabularyCodon.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Vocabularies\Vocabulary.xsd" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Services\DefaultDialogService.cs" />
+    <Compile Include="Services\DefaultDocumentReloadService.cs" />
+    <Compile Include="Services\DefaultEditorService.cs" />
+    <Compile Include="Services\DefaultRecentDocumentService.cs" />
+    <Compile Include="Services\DefaultSelectionService.cs" />
+    <Compile Include="Services\DefaultSettingsService.cs" />
+    <Compile Include="Services\DefaultVocabularyService.cs" />
+    <Compile Include="Services\EditorInfo.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="Services\IDocumentReloadService.cs" />
+    <Compile Include="Services\IEditorService.cs" />
+    <Compile Include="Services\IMethodInvocationService.cs" />
+    <Compile Include="Services\IRecentDocumentService.cs" />
+    <Compile Include="Services\ISelectionService.cs" />
+    <Compile Include="Services\ISettingsService.cs" />
+    <Compile Include="Services\IToolStripService.cs" />
+    <Compile Include="Services\DefaultToolStripService.cs" />
+    <Compile Include="Services\IVocabularyService.cs" />
+    <Compile Include="Services\RecentDocumentSettings.cs" />
+    <Compile Include="Services\WorkbenchService.cs" />
+    <Compile Include="SplashScreenContext.cs" />
+    <Compile Include="StringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\ContentTypeTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\FontComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\PackagePathTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\RelationshipIDTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\RelationshipTypeTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\AboutDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\BrowseWithDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\BrowseWithDialog.designer.cs">
+      <DependentUpon>BrowseWithDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\DialogButtons.cs" />
+    <Compile Include="UI\Dialogs\DialogWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\DialogWindow.designer.cs">
+      <DependentUpon>DialogWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\EncodingPickerDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\EncodingPickerDialog.Designer.cs">
+      <DependentUpon>EncodingPickerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\ErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\ErrorDialog.Designer.cs">
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\DialogContent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\IPropertyPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\OptionPanelCodon.cs" />
+    <Compile Include="UI\Dialogs\OptionsDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\OptionsDialog.Designer.cs">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\PackagingErrorsDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\PackagingErrorsDialog.Designer.cs">
+      <DependentUpon>PackagingErrorsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Dialogs\SignaturesDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Dialogs\SignaturesDialog.Designer.cs">
+      <DependentUpon>SignaturesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Language\LanguagePack.cs" />
+    <Compile Include="UI\Language\LanguagePackCodon.cs" />
+    <Compile Include="UI\Language\LanguageService.cs" />
+    <Compile Include="UI\Menu\CheckableToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\ComboBoxBuilderCodon.cs" />
+    <Compile Include="UI\Menu\ContextStripCodon.cs" />
+    <Compile Include="UI\Menu\ICheckableMenuCommand.cs" />
+    <Compile Include="UI\Menu\IComboBoxBuilder.cs" />
+    <Compile Include="UI\Menu\IMenuCommand.cs" />
+    <Compile Include="UI\Menu\ISubMenuBuilder.cs" />
+    <Compile Include="UI\Menu\MenuBuilderCodon.cs" />
+    <Compile Include="UI\Menu\MenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\MenuStripCodon.cs" />
+    <Compile Include="UI\Menu\RecentDocumentsSubMenuBuilder.cs" />
+    <Compile Include="UI\Menu\ToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\ToolStripCodon.cs" />
+    <Compile Include="UI\Menu\ToolStripComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\ToolStripComboBoxCodon.cs" />
+    <Compile Include="UI\Menu\ToolStripComboBoxItem.cs" />
+    <Compile Include="UI\Menu\ToolStripComboBoxItemCodon.cs" />
+    <Compile Include="UI\Menu\ToolStripDropDownButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\ToolStripDropDownCodon.cs" />
+    <Compile Include="UI\Menu\ToolStripLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\ToolStripLabelCodon.cs" />
+    <Compile Include="UI\Menu\ToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\ToolStripMenuItemCodon.cs" />
+    <Compile Include="UI\Menu\ToolStripSeparator.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Menu\ToolStripSeparatorCodon.cs" />
+    <Compile Include="UI\Menu\WindowSubMenuBuilder.cs" />
+    <Compile Include="UI\Workbench\BrowserContentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Workbench\BrowserContentControl.Designer.cs">
+      <DependentUpon>BrowserContentControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Workbench\BrowserContentEditor.cs" />
+    <Compile Include="UI\Workbench\BrowserContentSource.cs" />
+    <Compile Include="UI\Workbench\ContentExplorerWrapper.cs" />
+    <Compile Include="UI\Workbench\ContentType.cs" />
+    <Compile Include="UI\Workbench\Default\DefaultWorkbenchLoader.cs" />
+    <Compile Include="UI\Workbench\ISupportEditing.cs" />
+    <Compile Include="UI\Workbench\OpenTabSupportsEditingCondition.cs" />
+    <Compile Include="UI\Workbench\WindowPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Workbench\WindowPicker.Designer.cs">
+      <DependentUpon>WindowPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Workbench\EnvironmentSettings.cs" />
+    <Compile Include="UI\Workbench\EnvironmentSettingsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Workbench\EnvironmentSettingsPanel.Designer.cs">
+      <DependentUpon>EnvironmentSettingsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Workbench\FirstTimeStartup.cs" />
+    <Compile Include="UI\Workbench\FontSettings.cs" />
+    <Compile Include="UI\Workbench\FontSettingsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Workbench\IWorkbenchLoader.cs" />
+    <Compile Include="UI\Workbench\LanguageSettingsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Workbench\LanguageSettingsPanel.Designer.cs">
+      <DependentUpon>LanguageSettingsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\ContentTypeMapping.cs" />
+    <Compile Include="Utils\ContentTypeMappingCodon.cs" />
+    <Compile Include="Utils\ContentTypeMappings.cs" />
+    <Compile Include="UI\Workbench\DefaultEditorCollection.cs" />
+    <Compile Include="UI\Workbench\Default\DefaultWorkbench.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Workbench\Default\WorkbenchSettings.cs" />
+    <Compile Include="UI\Workbench\Default\WorkbenchWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Workbench\DocumentPartContentSource.cs" />
+    <Compile Include="UI\Workbench\EditorCodon.cs" />
+    <Compile Include="UI\Workbench\EditorSettings.cs" />
+    <Compile Include="UI\Workbench\FileContentSource.cs" />
+    <Compile Include="UI\Workbench\HasDirtyOpenTabCondition.cs" />
+    <Compile Include="UI\Workbench\HasEditableOpenTabCondition.cs" />
+    <Compile Include="UI\Workbench\HasEditableXmlOpenTabCondition.cs" />
+    <Compile Include="UI\Workbench\HasOpenTabCondition.cs" />
+    <Compile Include="UI\Workbench\IContentEditor.cs" />
+    <Compile Include="UI\Workbench\IContentExplorer.cs" />
+    <Compile Include="UI\Workbench\IContentSource.cs" />
+    <Compile Include="UI\Workbench\InspectorCodon.cs" />
+    <Compile Include="UI\Workbench\IWindow.cs" />
+    <Compile Include="UI\Workbench\IWorkbench.cs" />
+    <Compile Include="UI\Workbench\RelationshipPartContentSource.cs" />
+    <Compile Include="UI\Workbench\WindowKind.cs" />
+    <Compile Include="UI\Workbench\WindowManager.cs" />
+    <Compile Include="UI\Workbench\WorkbenchSingleton.cs" />
+    <Compile Include="Utils\FileFilter.cs" />
+    <Compile Include="Utils\FileFilterCodon.cs" />
+    <Compile Include="Utils\FileFilters.cs" />
+    <Compile Include="WindowPickerMessageFilter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ImageResources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ImageResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StringResources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\DialogWindow.resx">
+      <DependentUpon>DialogWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\SignaturesDialog.resx">
+      <DependentUpon>SignaturesDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Workbench\Default\DefaultWorkbench.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DefaultWorkbench.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AddIns\PackageExplorer.addin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="UI\Controls\SplashScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\BrowseWithDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BrowseWithDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\EncodingPickerDialog.resx">
+      <DependentUpon>EncodingPickerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\ErrorDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\OptionsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Dialogs\PackagingErrorsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PackagingErrorsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Workbench\BrowserContentControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BrowserContentControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Workbench\WindowPicker.resx">
+      <DependentUpon>WindowPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Workbench\EnvironmentSettingsPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EnvironmentSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Workbench\FontSettingsPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FontSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Logo.png" />
+    <EmbeddedResource Include="Resources\LargeIcon.png" />
+    <Content Include="Resources\error.gif" />
+    <Content Include="Resources\New.png" />
+    <Content Include="Resources\Open.png" />
+    <Content Include="Resources\OpenInShell.png" />
+    <Content Include="Resources\Save.png" />
+    <EmbeddedResource Include="Resources\SplashBackground.png" />
+    <EmbeddedResource Include="UI\Workbench\LanguageSettingsPanel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LanguageSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SmallIcon.png" />
+    <Content Include="Resources\ThumbnailView.png" />
+    <Content Include="Resources\ThumbnailViewHS.png" />
+    <Content Include="Vocabularies\DrawingML.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vocabularies\PresentationML.xml" />
+    <Content Include="Vocabularies\Shared.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Vocabularies\SpreadsheetML.xml" />
+    <Content Include="Vocabularies\WordprocessingML.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PackageExplorer.Core\PackageExplorer.Core.csproj">
+      <Project>{9D9D095D-7E60-40FA-B837-E506C608203D}</Project>
+      <Name>PackageExplorer.Core</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

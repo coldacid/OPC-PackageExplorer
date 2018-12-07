@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<a:AddIn xmlns:a="http://PackageExplorer/AddIn"
+		 name="Package Explorer Document Factory"
+		 author="Wouter van Vugt"
+		 copyright="(C) Wouter van Vugt 2008"
+		 description="The Package Explorer Document Factory addin"
+		 url="http://codeplex.com/packageexplorer"
+		 version="1.0.0.0">
+
+  <a:Runtime>
+    <a:Assembly path="PackageExplorer.AddIns.DocumentInspector, Version=3.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+    <a:Assembly path="PackageExplorer.AddIns.DocumentFactory, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=fc6e42aeb767065f" />
+  </a:Runtime>
+
+  <a:Condition name="HasVocabulary">
+    <HasVocabulary />
+  </a:Condition>
+
+  <a:Condition name="IsInFlatMode">
+    <FlatModeState FlatModeEnabled="false" />
+  </a:Condition>
+
+  <a:Extension path="/workspace/commands">
+    <Class id="addNewPart"
+			   class="PackageExplorer.AddIns.DocumentFactory.AddNewPartCommand" />
+    <Class id="newDocument"
+			   class="PackageExplorer.AddIns.DocumentFactory.NewDocumentCommand" />
+    <Class id="deletePart"
+			   class="PackageExplorer.AddIns.DocumentFactory.DeletePartCommand" />
+    <Class id="removeFromParent"
+			   class="PackageExplorer.AddIns.DocumentFactory.RemoveFromParentCommand" />
+    <Class id="addRelationship"
+			   class="PackageExplorer.AddIns.DocumentFactory.AddRelationshipCommand" />
+  </a:Extension>
+
+  <a:Extension path="/workspace/documentInspector/toolStrips/documentContextStrip">
+    <Condition ref="HasVocabulary" action="Disable">
+      <ToolStripMenuItem id="addNewPart"
+                     title="Add new part"
+                     insertAfter="separator1"
+                     commandName="DocumentFactory.AddNewPart" />
+      <ToolStripMenuItem id="addRelationship"
+                         title="Add relationship"
+                         insertAfter="addNewPart"
+                         commandName="DocumentFactory.AddRelationship" />
+    </Condition>
+    <ToolStripMenuItem id="deletePart"
+                       title="Delete a part"
+                       insertAfter="addRelationship"
+                       commandName="DocumentFactory.DeletePart" />
+    <ToolStripSeparator id="editSeparator"
+                        insertAfter="deletePart"
+                        insertBefore="close" />
+  </a:Extension>
+
+  <a:Extension path="/workspace/documentInspector/toolStrips/documentPartContextStrip">
+    <Condition ref="HasVocabulary" action="Disable">
+      <ToolStripMenuItem id="addNewPart"
+                         title="Add Part"
+                         insertAfter="separator2"
+                         commandName="DocumentFactory.AddNewPart" />
+      <ToolStripMenuItem id="addRelationship"
+                         title="Add relationship"
+                         insertAfter="addNewPart"
+                         commandName="DocumentFactory.AddRelationship" />
+    </Condition>
+    <ToolStripMenuItem id="deletePart"
+                       title="Delete this part"
+                       insertAfter="addRelationship"
+                       commandName="DocumentFactory.DeletePart" />
+    <Condition ref="IsInFlatMode" action="Disable">
+      <ToolStripMenuItem id="removeFromParent"
+                         title="Remove from parent"
+                         insertAfter="deletePart"
+                         commandName="DocumentFactory.RemoveFromParent" />
+    </Condition>
+  </a:Extension>
+
+  <a:Extension path="/workspace/toolStrips/mainMenu/file">
+    <ToolStripMenuItem id="new"
+                       insertBefore="open"
+								       title="&amp;New">
+      <ToolStripMenuItem id="document"
+                         title="&amp;Document"
+                         commandName="DocumentFactory.NewDocument"
+                         shortCut="Control, N" />
+    </ToolStripMenuItem>
+  </a:Extension>
+</a:AddIn>
